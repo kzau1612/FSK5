@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BT2</title>
+    <style>
+      table,
+      tr {
+        /* border: 1px solid black; */
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+        font-size: 60px;
+        font-weight: 600;
+        table-layout: fixed;
+      }
+      tr,
+      td {
+        text-align: center;
+      }
+
+      tr:last-child td {
+        border-bottom: 3px solid #7ac3a2;
+      }
+      tr:first-child td {
+        text-align: right;
+        padding: 20px;
+        font-weight: lighter;
+      }
+
+      .test td {
+        border-top: 3px solid #7ac3a2;
+        border-right: 3px solid #7ac3a2;
+      }
+    </style>
+  </head>
+  <body>
+    <table width="30%">
+      <tr>
+        <td colspan="4">9 + 9</td>
+      </tr>
+
+      <tr class="test">
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>+</td>
+      </tr>
+      <tr class="test">
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>-</td>
+      </tr>
+      <tr class="test">
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>X</td>
+      </tr>
+      <tr class="test">
+        <td>C</td>
+        <td>0</td>
+        <td>=</td>
+        <td>/</td>
+      </tr>
+    </table>
+  </body>
+</html>
