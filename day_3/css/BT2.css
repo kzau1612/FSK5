@@ -1,0 +1,30 @@
+label {
+  display: inline-block;
+  width: 110px;
+}
+
+div {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.role,
+.signon {
+  display: flex;
+  align-items: center;
+}
+
+.role-list,
+.signon-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-list {
+  margin-left: 100px;
+}
+
+button {
+  margin-left: 10px;
+}
