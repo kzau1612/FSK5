@@ -22,6 +22,7 @@ button {
   background: #000;
   color: white;
   padding: 10px 20px;
+  cursor: pointer;
 }
 
 button:last-child {
