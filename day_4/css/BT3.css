@@ -47,11 +47,11 @@ img:last-child {
   display: none;
 }
 
-.item-action:hover .item-img:first-child {
+.item:hover .item-img:first-child {
   display: none;
 }
 
-.item-action:hover .item-img:last-child {
+.item:hover .item-img:last-child {
   display: inline;
 }
 
@@ -60,10 +60,7 @@ img:last-child {
 }
 
 .item-action {
-  display: flex;
-  justify-content: center;
   position: relative;
-  width: 196px;
 }
 
 .action {
@@ -74,7 +71,7 @@ img:last-child {
   right: 0;
 }
 
-.item-action:hover .action {
+.item:hover .action {
   display: block;
 }
 
