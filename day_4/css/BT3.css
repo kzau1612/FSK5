@@ -1,0 +1,107 @@
+section {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+h2 {
+  font-size: 50px;
+}
+
+.nav-btn {
+  padding: 10px 20px;
+  border-color: transparent;
+}
+
+button:focus {
+  color: white;
+  background: #29378e;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+i,
+button {
+  cursor: pointer;
+}
+
+.list {
+  margin-top: 50px;
+}
+
+img {
+  width: 196px;
+  height: 294px;
+  object-fit: cover;
+  background: #000;
+}
+
+.list {
+  display: flex;
+  justify-content: space-around;
+}
+
+img:last-child {
+  display: none;
+}
+
+.item-action:hover .item-img:first-child {
+  display: none;
+}
+
+.item-action:hover .item-img:last-child {
+  display: inline;
+}
+
+.active {
+  color: orange;
+}
+
+.item-action {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 196px;
+}
+
+.action {
+  position: absolute;
+  display: none;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.item-action:hover .action {
+  display: block;
+}
+
+.action-row {
+  display: flex;
+  justify-content: center;
+  column-gap: 9px;
+}
+
+.action-row i {
+  padding: 21px;
+  color: white;
+  background: #29378e;
+}
+
+.action-btn {
+  margin-top: 10px;
+  width: 196px;
+  padding: 21px;
+  color: white;
+  background: #29378e;
+}
+
+.stars {
+  margin-top: 50px;
+}
+
+span {
+  font-weight: 600;
+}
