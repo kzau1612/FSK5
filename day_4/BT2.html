@@ -24,7 +24,13 @@
           <input type="email" name="email" placeholder="EMAIL" />
         </div>
         <div class="row">
-          <input type="text" name="date" placeholder="DATE" />
+          <input
+            type="text"
+            name="date"
+            placeholder="DATE"
+            onfocus="(this.type='date')"
+            onblur="if(this.value==''){this.type='text'}"
+          />
           <input type="text" name="time" placeholder="TIME" />
         </div>
         <div class="row">
