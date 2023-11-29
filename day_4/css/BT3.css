@@ -31,7 +31,7 @@ button {
   margin-top: 50px;
 }
 
-img {
+.item-img img {
   width: 196px;
   height: 294px;
   object-fit: cover;
@@ -43,7 +43,7 @@ img {
   justify-content: space-around;
 }
 
-img:last-child {
+.item-img:last-child {
   display: none;
 }
 
