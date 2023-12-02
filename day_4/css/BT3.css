@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 section {
   text-align: center;
   padding-bottom: 20px;
@@ -8,11 +12,17 @@ h2 {
 }
 
 .nav-btn {
+  display: inline-block;
+  /* background: red; */
   padding: 10px 20px;
   border-color: transparent;
 }
 
-button:focus {
+.nav-item {
+  display: none;
+}
+
+.nav-item:checked + .nav-btn {
   color: white;
   background: #29378e;
 }
@@ -23,12 +33,29 @@ a {
 }
 
 i,
-button {
+label {
   cursor: pointer;
+  padding: 0;
+  border: none;
 }
 
-.list {
-  margin-top: 50px;
+.skincare,
+.haircare,
+.cosmetic,
+.fragrance,
+.makeup {
+  display: none;
+  margin: 50px auto;
+  width: 1200px;
+}
+
+.nav-item[id="skincare"]:checked ~ .skincare,
+.nav-item[id="haircare"]:checked ~ .haircare,
+.nav-item[id="cosmetic"]:checked ~ .cosmetic,
+.nav-item[id="fragrance"]:checked ~ .fragrance,
+.nav-item[id="makeup"]:checked ~ .makeup {
+  display: flex;
+  justify-content: space-around;
 }
 
 .item-img img {
@@ -38,15 +65,7 @@ button {
   background: #000;
 }
 
-.list {
-  display: flex;
-  justify-content: space-around;
-}
-
-.item-img:last-child {
-  display: none;
-}
-
+.item-img:last-child,
 .item:hover .item-img:first-child {
   display: none;
 }
