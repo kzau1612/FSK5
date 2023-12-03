@@ -1,0 +1,109 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 0 100px 30px;
+}
+
+.row {
+  display: flex;
+  margin-top: 30px;
+}
+
+i {
+  display: inline-block;
+  background: #dddddd;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+}
+
+select {
+  color: gray;
+  position: relative;
+  background: url(../img/updownarow.svg) no-repeat right;
+}
+
+option {
+  color: white;
+  background-color: #b2b2b2;
+}
+
+textarea {
+  font-family: Arial, Helvetica, sans-serif;
+  resize: none;
+  padding: 20px 20px 0 20px;
+}
+
+input,
+select {
+  height: 60px;
+}
+
+input,
+select,
+textarea {
+  width: 500px;
+  padding-left: 15px;
+  border: 1px solid #ddd;
+}
+
+label {
+  position: relative;
+}
+
+label.active::after {
+  position: absolute;
+  display: inline-block;
+  content: "*";
+  color: #b2b2b2;
+  font-size: 25px;
+  line-height: 0;
+  right: 20px;
+  top: 0;
+  bottom: 0;
+}
+
+label.active:last-child::after {
+  margin: 0;
+  top: 40px;
+}
+
+#check {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  outline: 3px solid #ddd;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#check:checked {
+  accent-color: white;
+}
+
+#check:after {
+  position: absolute;
+  content: "";
+  width: 26px;
+  height: 26px;
+  border: 2px solid #ddd;
+}
+
+button {
+  margin-left: 400px;
+  padding: 10px 40px;
+  background: red;
+  color: white;
+  font-size: 20px;
+  border: none;
+}
+
+select,
+button,
+#check {
+  cursor: pointer;
+}

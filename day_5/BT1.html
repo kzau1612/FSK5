@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BT1</title>
+    <link rel="stylesheet" href="./css/BT1.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Hey there</h2>
+      <p>
+        <span> We'd like to hear from you</span>. Send us your message or just
+        say hy with our
+        <br />
+        contact form or directly via phone
+      </p>
+      <form>
+        <div class="row">
+          <i class="fa-regular fa-user"></i>
+          <label class="active"
+            ><input type="text" placeholder="Your name" required
+          /></label>
+        </div>
+        <div class="row">
+          <i class="fa-regular fa-envelope"></i>
+          <label class="active"
+            ><input type="email" placeholder="your@domain.com" required
+          /></label>
+        </div>
+        <div class="row">
+          <i class="fa-solid fa-mobile-screen-button"></i>
+          <input type="text" placeholder="+44 00 123" />
+        </div>
+        <div class="row">
+          <i class="fa-solid fa-book"></i>
+          <select>
+            <option value="" hidden>Subject</option>
+            <option value="asd">asd</option>
+          </select>
+        </div>
+        <div class="row">
+          <i class="fa-regular fa-message"></i>
+          <label class="active">
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="10"
+              placeholder="Message"
+            ></textarea>
+          </label>
+        </div>
+        <div class="row">
+          <input type="checkbox" name="check" id="check" />
+          <button>SEND</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
