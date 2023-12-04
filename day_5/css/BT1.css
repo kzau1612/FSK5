@@ -151,7 +151,6 @@ textarea {
   color: white;
   font-size: 16px;
   text-align: center;
-  /* width: 100px; */
   height: 17px;
   line-height: 0;
   right: 0;
@@ -160,22 +159,6 @@ textarea {
   bottom: 5px;
   margin: auto;
 }
-
-/* label {
-  position: relative;
-} */
-
-/* label.active::after {
-  position: absolute;
-  display: inline-block;
-  content: "*";
-  color: #b2b2b2;
-  font-size: 25px;
-  line-height: 0;
-  right: 20px;
-  top: 0;
-  bottom: 0;
-} */
 
 label.active:last-child::after {
   margin: 0;
