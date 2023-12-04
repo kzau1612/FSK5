@@ -7,9 +7,11 @@ body {
 }
 
 label {
-  display: block;
+  display: inline-block;
   width: 100%;
-  height: 100%;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
 }
 
 .section {
@@ -17,8 +19,7 @@ label {
 }
 
 h4 {
-  padding: 10px 10px 10px 0;
-  background: orange;
+  background: #d95924;
   position: relative;
   display: flex;
   align-items: center;
@@ -28,12 +29,13 @@ label {
   padding-left: 30px;
 }
 
-h4::after {
+h4::before {
   position: absolute;
   content: "+";
   font-size: 20px;
   left: 10px;
   font-weight: 900;
+  color: white;
 }
 
 input {
@@ -44,7 +46,7 @@ input:checked + h4 + .body {
   display: block;
 }
 
-input:checked + h4::after {
+input:checked + h4::before {
   content: "-";
 }
 
