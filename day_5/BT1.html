@@ -9,6 +9,13 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&family=Lobster&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="container">
@@ -21,43 +28,58 @@
       </p>
       <form>
         <div class="row">
+          <input type="text" placeholder="Your name" required />
           <i class="fa-regular fa-user"></i>
-          <label class="active"
-            ><input type="text" placeholder="Your name" required
-          /></label>
+          <i class="fa-regular fa-star star"></i>
+          <i class="fa-solid fa-xmark xmark"></i>
+          <div class="popup">
+            <span class="popup-message">Enter your name</span>
+          </div>
         </div>
         <div class="row">
+          <input type="email" placeholder="your@domain.com" required />
           <i class="fa-regular fa-envelope"></i>
-          <label class="active"
-            ><input type="email" placeholder="your@domain.com" required
-          /></label>
+          <i class="fa-regular fa-star star"></i>
+          <i class="fa-solid fa-xmark xmark"></i>
+          <div class="popup">
+            <span class="popup-message">Enter your email</span>
+          </div>
         </div>
+
         <div class="row">
-          <i class="fa-solid fa-mobile-screen-button"></i>
           <input type="text" placeholder="+44 00 123" />
+          <i class="fa-solid fa-mobile-screen-button"></i>
+          <div class="popup">
+            <span class="popup-message">Enter phone number</span>
+          </div>
         </div>
         <div class="row">
-          <i class="fa-solid fa-book"></i>
           <select>
             <option value="" hidden>Subject</option>
             <option value="asd">asd</option>
           </select>
+          <i class="fa-solid fa-book"></i>
+          <div class="popup">
+            <span class="popup-message">Select a subject</span>
+          </div>
         </div>
         <div class="row">
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="Message"
+          ></textarea>
           <i class="fa-regular fa-message"></i>
-          <label class="active">
-            <textarea
-              name=""
-              id=""
-              cols="30"
-              rows="10"
-              placeholder="Message"
-            ></textarea>
-          </label>
+          <div class="popup">
+            <span class="popup-message">Enter your message</span>
+          </div>
         </div>
         <div class="row">
-          <input type="checkbox" name="check" id="check" />
           <button>SEND</button>
+          <span class="message">Send me a copy of this massage</span>
+          <input type="checkbox" name="check" id="check" />
         </div>
       </form>
     </div>
