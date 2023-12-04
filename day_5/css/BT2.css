@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 20px;
+}
+
+h4 {
+  background: orange;
+  padding: 10px 10px 10px 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+h4::after {
+  position: absolute;
+  content: "+";
+  font-size: 20px;
+  left: 10px;
+  font-weight: 900;
+}
+
+input {
+  display: none;
+}
+
+input:checked + label + .body {
+  display: block;
+}
+
+input:checked + label h4::after {
+  content: "-";
+}
+
+.body {
+  display: none;
+}
