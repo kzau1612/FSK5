@@ -119,6 +119,7 @@ textarea {
 
 .xmark {
   visibility: hidden;
+  cursor: pointer;
 }
 
 .star,
