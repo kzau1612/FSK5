@@ -29,7 +29,7 @@ label {
   padding-left: 30px;
 }
 
-h4::before {
+label::before {
   position: absolute;
   content: "+";
   font-size: 20px;
@@ -46,7 +46,7 @@ input:checked + h4 + .body {
   display: block;
 }
 
-input:checked + h4::before {
+input:checked + h4 label::before {
   content: "-";
 }
 

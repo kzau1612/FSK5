@@ -185,7 +185,7 @@ label.active:last-child::after {
   content: "";
   width: 26px;
   height: 26px;
-  border: 2px solid #ddd;
+  border: 3px solid #ddd;
 }
 
 button {
