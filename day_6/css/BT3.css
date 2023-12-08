@@ -132,7 +132,7 @@ a:hover {
   line-height: 30px;
 }
 
-.login {
+.form {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -147,13 +147,13 @@ form {
   width: 400px;
 }
 
-.login-title {
+.form-title {
   font-weight: 600;
   font-size: 25px;
   position: relative;
 }
 
-.login-title::after {
+.form-title::after {
   display: inline-block;
   position: absolute;
   content: "";
@@ -166,11 +166,11 @@ form {
   margin: 0 auto;
 }
 
-.login-title span {
+.form-title span {
   color: #ff574d;
 }
 
-.login-input {
+.form-input {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -178,7 +178,7 @@ form {
   margin-top: 50px;
 }
 
-.login-input input {
+.form-input input {
   padding: 10px 20px;
   font-size: 16px;
   width: 400px;
@@ -186,7 +186,7 @@ form {
   border: 1px solid #808080;
 }
 
-.login-action {
+.form-action {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -194,23 +194,23 @@ form {
   margin-top: 20px;
 }
 
-.login-action label {
+.form-action label {
   display: flex;
   align-items: center;
 }
 
-.login-action__remember {
+.form-action__remember {
   margin-right: 10px;
   width: 20px;
   height: 20px;
 }
 
-.login-action__forgot {
+.form-action__forgot {
   text-decoration: none;
   color: black;
 }
 
-.login-btn {
+.form-btn {
   display: block;
   width: 100%;
   background: #ff574d;
@@ -221,11 +221,11 @@ form {
   border-radius: 4px;
 }
 
-.login-register {
+.form-register {
   margin-top: 20px;
 }
 
-.login-register a {
+.form-register a {
   margin-left: 5px;
   text-decoration: none;
   color: black;
