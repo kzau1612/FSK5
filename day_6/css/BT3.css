@@ -29,7 +29,6 @@ a:hover {
   display: flex;
   position: relative;
   /* flex-direction: row-reverse; */
-  transition: ease-in-out 0.5s;
 }
 
 .justlog {
@@ -55,7 +54,6 @@ a:hover {
   right: -25px;
   top: 50%;
   transform: translateY(-50%);
-  transition: ease-in-out 0.5s;
 }
 
 .arrow-right {
@@ -85,12 +83,12 @@ a:hover {
 
 #reverse:checked + .container .justlog {
   z-index: 1;
-  transform: translateX(600px);
+  transform: translateX(600px); /* 171% */
   border-radius: 0 7px 7px 0;
 }
 
 #reverse:checked + .container .form {
-  transform: translateX(-350px);
+  transform: translateX(-350px); /* -58.33% */
   border-radius: 7px 0 0 7px;
 }
 
