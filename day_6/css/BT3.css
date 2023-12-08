@@ -14,6 +14,7 @@ section {
   width: 100vw;
   position: relative;
 }
+
 button,
 label {
   cursor: pointer;
@@ -28,6 +29,7 @@ a:hover {
   display: flex;
   position: relative;
   /* flex-direction: row-reverse; */
+  transition: ease-in-out 0.5s;
 }
 
 .justlog {
@@ -38,6 +40,7 @@ a:hover {
   text-align: center;
   color: white;
   border-radius: 7px 0 0 7px;
+  transition: ease-in-out 0.5s;
 }
 
 .justlog::after {
@@ -52,6 +55,7 @@ a:hover {
   right: -25px;
   top: 50%;
   transform: translateY(-50%);
+  transition: ease-in-out 0.5s;
 }
 
 .arrow-right {
@@ -66,6 +70,7 @@ a:hover {
   right: -24px;
   color: #ff574d;
   transform: translateY(-50%);
+  transition: ease-in-out 0.5s;
 }
 
 .arrow-right:hover {
@@ -75,7 +80,18 @@ a:hover {
 }
 
 #reverse:checked + .container {
-  flex-direction: row-reverse;
+  /* flex-direction: row-reverse; */
+}
+
+#reverse:checked + .container .justlog {
+  z-index: 1;
+  transform: translateX(600px);
+  border-radius: 0 7px 7px 0;
+}
+
+#reverse:checked + .container .form {
+  transform: translateX(-350px);
+  border-radius: 7px 0 0 7px;
 }
 
 #reverse:checked + .container .justlog::after {
@@ -84,6 +100,7 @@ a:hover {
 }
 
 #reverse:checked + .container .arrow-right {
+  z-index: 2;
   left: -25px;
   right: 100%;
   transform: translateY(-50%) rotate(180deg);
@@ -141,6 +158,7 @@ a:hover {
   padding: 50px 30px 80px;
   border-radius: 0 7px 7px 0;
   background: white;
+  transition: ease-in-out 0.5s;
 }
 
 form {
