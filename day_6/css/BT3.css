@@ -6,12 +6,13 @@
 }
 
 section {
-  background: url(../img/bg.jpg) no-repeat center/cover;
-  height: 100vh;
-  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: url(../img/bg.jpg) no-repeat center/cover;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
 }
 button,
 label {
@@ -25,15 +26,67 @@ a:hover {
 
 .container {
   display: flex;
+  position: relative;
+  /* flex-direction: row-reverse; */
 }
 
 .justlog {
+  position: relative;
   background: #ff574d;
   padding: 100px 20px;
   width: 350px;
   text-align: center;
   color: white;
   border-radius: 7px 0 0 7px;
+}
+
+.justlog::after {
+  position: absolute;
+  display: inline-block;
+  content: "";
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+  right: -25px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow-right {
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  right: -24px;
+  color: #ff574d;
+  transform: translateY(-50%);
+}
+
+.arrow-right:hover {
+  background: #ff574d;
+  color: white;
+  opacity: 0.5;
+}
+
+#reverse:checked + .container {
+  flex-direction: row-reverse;
+}
+
+#reverse:checked + .container .justlog::after {
+  left: -26px;
+  box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+#reverse:checked + .container .arrow-right {
+  left: -25px;
+  right: 100%;
+  transform: translateY(-50%) rotate(180deg);
 }
 
 .justlog-title {
