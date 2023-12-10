@@ -54,3 +54,54 @@ h3 {
   font-style: italic;
   font-weight: 500;
 }
+
+.districts {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 30px;
+  margin-top: 35px;
+  /* justify-content: space-between; */
+}
+
+.districts-item {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  border-radius: 7px;
+  padding: 30px;
+  justify-content: space-between;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: darken;
+}
+
+.districts-item:nth-child(1) {
+  background: rgba(0, 0, 0, 0.3) url(../img/quan2.jpg) center/cover no-repeat;
+}
+
+.districts-item:nth-child(2) {
+  background: rgba(0, 0, 0, 0.3) url(../img/quan7.jpg) center/cover no-repeat;
+}
+
+.districts-item:nth-child(3) {
+  background: rgba(0, 0, 0, 0.3) url(../img/quan9.jpg) center/cover no-repeat;
+}
+.districts-item:nth-child(4) {
+  background: rgba(0, 0, 0, 0.3) url(../img/tanbinh.jpeg) center/cover no-repeat;
+}
+.districts-item:nth-child(5) {
+  background: rgba(0, 0, 0, 0.3) url(../img/thuduc.jpg) center/cover no-repeat;
+}
+.districts-item:nth-child(6) {
+  background: rgba(0, 0, 0, 0.3) url(../img/binhchanh.webp) center/cover
+    no-repeat;
+}
+
+.districts-name {
+  font-size: 30px;
+}
+
+.stats {
+  font-weight: 600;
+  font-size: 20px;
+}
