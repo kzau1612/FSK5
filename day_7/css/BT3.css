@@ -18,6 +18,19 @@ section {
 h2 {
   font-size: 30px;
   font-weight: 600;
+  position: relative;
+}
+
+h2::after {
+  position: absolute;
+  display: inline-block;
+  content: "";
+  height: 1px;
+  width: 60%;
+  background: grey;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 h3 {
@@ -60,6 +73,7 @@ h3 {
   grid-template-columns: auto auto auto;
   gap: 30px;
   margin-top: 35px;
+
   /* justify-content: space-between; */
 }
 
@@ -73,6 +87,14 @@ h3 {
   color: white;
   background-color: rgba(0, 0, 0, 0.3);
   background-blend-mode: darken;
+  cursor: pointer;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.districts-item:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px 1px #333;
 }
 
 .districts-item:nth-child(1) {
