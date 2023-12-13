@@ -15,10 +15,10 @@ a {
 }
 
 section {
+  background: #000;
   position: relative;
   height: 100vh;
   padding: 50px;
-  background: #000;
 }
 
 .overlay {
@@ -37,10 +37,15 @@ img {
   display: block;
 }
 
+#cart:checked ~ .cart {
+  opacity: 1;
+}
+
 .cart {
   z-index: 2;
   position: absolute;
   right: 0;
+  /* opacity: 0; */
   width: 500px;
 }
 
@@ -58,8 +63,7 @@ img {
 
 .cart-body {
   background: white;
-  padding: 0 20px;
-  height: 1000px;
+  padding: 0 20px 10px;
 }
 
 .cart-body__item {
@@ -155,4 +159,22 @@ img {
   border-radius: 7px;
   padding: 20px;
   margin-top: 15px;
+}
+
+.cart__shipping {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.shipping__icon {
+  padding: 10px;
+  border: 2px solid #4060f3;
+  border-radius: 50%;
+}
+
+.shipping__note {
+  font-size: 20px;
+  font-weight: 600;
 }
