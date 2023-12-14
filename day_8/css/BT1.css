@@ -69,9 +69,6 @@ nav {
   color: #8c919b;
 }
 
-.nav-item:last-child {
-}
-
 .nav-item span:last-child {
   margin-left: 10px;
 }
@@ -91,8 +88,8 @@ nav {
   border-right: 1px solid gray;
 }
 
-.col {
-  margin-bottom: 20px;
+.left .menu-title:last-of-type {
+  margin-top: 60px;
 }
 
 .row {
