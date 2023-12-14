@@ -154,6 +154,7 @@ img {
 
 .item__price {
   margin-left: 60px;
+  font-weight: 600;
 }
 
 .item__close-btn {
