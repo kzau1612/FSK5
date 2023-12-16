@@ -20,7 +20,9 @@ section {
   padding: 50px;
 }
 
-.shopping {
+.shopping,
+.cart__close_btn,
+.change-quantity {
   cursor: pointer;
 }
 
@@ -82,10 +84,6 @@ img {
   border-radius: 50%;
   top: -13px;
   right: -24px;
-}
-
-.cart__close_btn {
-  cursor: pointer;
 }
 
 .cart__close_btn:hover {
@@ -171,7 +169,8 @@ img {
   padding: 20px 0;
 }
 
-.cart__subtotal span {
+.cart__subtotal span,
+.shipping__note {
   font-weight: 600;
   font-size: 20px;
 }
@@ -223,9 +222,4 @@ img {
   padding: 10px;
   border: 2px solid #4060f3;
   border-radius: 50%;
-}
-
-.shipping__note {
-  font-size: 20px;
-  font-weight: 600;
 }
