@@ -7,36 +7,56 @@
 .milestones {
   width: 40%;
   font-family: "Inter", sans-serif;
+  margin-top: 30px;
 }
 
 .stage {
-  width: 304px;
-  text-align: end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  column-gap: 50px;
 }
 
 .stage__title {
   font-family: "Space Grotesk", sans-serif;
-  font-size: 27px;
-  padding-right: 20px;
+  font-size: 40px;
 }
 
 .stage__content {
-  padding: 0 20px 40px 0;
-  border-right: 3px solid gray;
+  padding: 0 58px 40px 0;
+  width: 424px;
+  text-align: end;
+  margin: 30px 142px 0 0;
+  border-right: 1px solid lightgray;
 }
 
 .content__desc {
+  font-size: 20px;
   text-indent: 24px;
   color: grey;
 }
 
 .btn {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 30px;
   text-decoration: none;
   color: gray;
   font-weight: 600;
   background: #f2f2f2;
   padding: 5px 10px;
   border-radius: 999px;
+}
+
+.stage__dot {
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  background: green;
+  border-radius: 50%;
 }
