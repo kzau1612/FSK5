@@ -4,9 +4,13 @@
   box-sizing: border-box;
 }
 
+section {
+  display: flex;
+  font-family: "Inter", sans-serif;
+}
+
 .milestones {
   width: 40%;
-  font-family: "Inter", sans-serif;
 }
 
 .stage {
@@ -86,4 +90,51 @@
     scale: 3;
     opacity: 0;
   }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.background-img {
+  position: relative;
+  width: 400px;
+  height: 500px;
+  margin-top: 30px;
+}
+
+.background-img:first-of-type {
+  z-index: 1;
+  bottom: -100px;
+  right: -100px;
+  background: url(../img/BT1.jpg) center/cover;
+}
+
+.background-img:last-of-type {
+  background: url(../img/img2-BT1.jpg) center/cover;
+}
+.background-color {
+  position: absolute;
+  inset: 20px;
+  background: #455fb2;
+}
+
+.background-color span {
+  position: absolute;
+  display: inline-block;
+  background: url(../img/BT1.jpg) center/cover text;
+  -webkit-text-fill-color: transparent;
+}
+
+.background-color span:first-child {
+  font-size: 50px;
+  font-weight: 600;
+  bottom: 100px;
+  right: 100px;
+}
+
+.background-color span:last-child {
+  bottom: 80px;
+  right: 100px;
 }
