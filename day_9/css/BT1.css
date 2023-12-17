@@ -1,0 +1,42 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.milestones {
+  width: 40%;
+  font-family: "Inter", sans-serif;
+}
+
+.stage {
+  width: 304px;
+  text-align: end;
+}
+
+.stage__title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 27px;
+  padding-right: 20px;
+}
+
+.stage__content {
+  padding: 0 20px 40px 0;
+  border-right: 3px solid gray;
+}
+
+.content__desc {
+  text-indent: 24px;
+  color: grey;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  color: gray;
+  font-weight: 600;
+  background: #f2f2f2;
+  padding: 5px 10px;
+  border-radius: 999px;
+}
