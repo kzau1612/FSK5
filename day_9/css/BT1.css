@@ -7,13 +7,13 @@
 .milestones {
   width: 40%;
   font-family: "Inter", sans-serif;
-  margin-top: 30px;
 }
 
 .stage {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  margin-top: 20px;
 }
 
 .row {
@@ -32,8 +32,12 @@
   padding: 0 58px 40px 0;
   width: 424px;
   text-align: end;
-  margin: 30px 142px 0 0;
+  margin: 20px 142px 0 0;
   border-right: 1px solid lightgray;
+}
+
+.stage:last-of-type .stage__content {
+  border: none;
 }
 
 .content__desc {
@@ -54,9 +58,32 @@
 }
 
 .stage__dot {
+  z-index: 2;
+  position: relative;
   display: inline-block;
   height: 10px;
   width: 10px;
   background: green;
   border-radius: 50%;
+}
+
+.stage__dot::before {
+  z-index: 1;
+  position: absolute;
+  display: inline-block;
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: green;
+  top: 0;
+  left: 0;
+  animation: radiate 2s infinite;
+}
+
+@keyframes radiate {
+  to {
+    scale: 3;
+    opacity: 0;
+  }
 }
