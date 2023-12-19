@@ -28,13 +28,15 @@ section {
   width: 360px;
   height: 260px;
   border: 1px solid grey;
-  transition: 0.2s;
+  transition: 0.1s;
   cursor: pointer;
   overflow: hidden;
 }
 
 .item:hover {
-  background: url(../img/BT2.jpg) center/cover;
+  /* background: url(../img/BT2.jpg); */
+  background-image: url(../img/BT2.jpg);
+  background-size: cover;
 }
 
 .item:hover .item-body {
@@ -120,5 +122,5 @@ i,
 .item-body,
 .item::after,
 span {
-  transition: 0.3s;
+  transition: 0.1s;
 }

@@ -20,6 +20,11 @@ section {
   margin-top: 20px;
 }
 
+.stage:hover .btn {
+  background: #a26f5a;
+  color: white;
+}
+
 .row {
   display: flex;
   justify-content: flex-end;
@@ -59,12 +64,13 @@ section {
   background: #f2f2f2;
   padding: 5px 10px;
   border-radius: 999px;
+  transition: 0.2s;
 }
 
-.btn:hover {
+/* .btn:hover {
   background: #a26f5a;
   color: white;
-}
+} */
 
 .stage__dot {
   z-index: 2;
