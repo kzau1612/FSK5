@@ -86,6 +86,7 @@ a:focus {
 .brand {
   text-align: end;
   color: white;
+  margin: 200px 200px 0 0;
 }
 
 h1 {
