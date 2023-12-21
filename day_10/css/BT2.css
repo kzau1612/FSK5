@@ -57,11 +57,11 @@ label {
 .list {
   position: relative;
   display: flex;
+
 }
 
 .item {
   background: white;
-
   position: absolute;
   border: 1px solid gray;
   height: 300px;
@@ -73,4 +73,6 @@ label {
   transform: rotateX(70deg);
   opacity: 0;
   transition: 0.3s;
+  overflow: scroll;
+
 }
