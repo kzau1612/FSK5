@@ -90,7 +90,7 @@ body {
   border-right: 200px solid transparent;
   border-bottom: 100px solid #cc4e43;
   border-left: 200px solid transparent;
-  transition-delay: 0.5s;
+  transition-delay: 0.1s;
 }
 
 .item:hover .box-4 {
