@@ -49,7 +49,7 @@ body {
 
 .box-1 {
   position: relative;
-  z-index: 3;
+  z-index: 4;
   border-top: 100px solid transparent;
   border-right: 200px solid #e46357;
   border-bottom: 100px solid #e46357;
@@ -84,17 +84,20 @@ body {
 
 .box-4 {
   position: absolute;
-  z-index: 1;
-  top: -50%;
+  z-index: 3;
+  top: -100%;
+  transform: rotateX(180deg);
+  transform-origin: bottom;
   border-top: 100px solid transparent;
   border-right: 200px solid transparent;
   border-bottom: 100px solid #cc4e43;
   border-left: 200px solid transparent;
-  transition-delay: 0.1s;
+  transition-delay: 0.2s;
 }
 
 .item:hover .box-4 {
-  top: -100%;
+  z-index: 1;
+  transform: rotateX(0);
   transition-delay: 0s;
 }
 
@@ -107,10 +110,11 @@ body {
   rotate: 180deg;
   translate: -50%;
   width: 300px;
-  height: 0px;
+  height: 100px;
   background: white;
 }
 
 .item:hover .box-5 {
   height: 300px;
+  transition-delay: 0.2s;
 }
