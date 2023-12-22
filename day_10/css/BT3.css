@@ -92,7 +92,7 @@ body {
   border-right: 200px solid transparent;
   border-bottom: 100px solid #cc4e43;
   border-left: 200px solid transparent;
-  transition-delay: 0.2s;
+  transition-delay: 0.3s;
 }
 
 .item:hover .box-4 {
@@ -115,6 +115,6 @@ body {
 }
 
 .item:hover .box-5 {
-  height: 300px;
+  height: 250px;
   transition-delay: 0.2s;
 }
