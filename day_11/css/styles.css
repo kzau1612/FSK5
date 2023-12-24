@@ -315,4 +315,41 @@ h2 {
   margin: 0 auto;
 }
 
+/* feature */
+
+.feature-top {
+  display: flex;
+  padding: 50px 0;
+  align-items: center;
+}
+
+.feature-top__media {
+  width: 58.33%;
+  padding: 0 12px;
+}
+
+.feature-top__content {
+  width: 41.6666666667%;
+}
+
+.feature-top__top-title {
+  color: #03a66b;
+}
+
+.feature-top__title {
+  margin-top: 8px;
+  max-width: 75%;
+}
+
+.feature-top__desc {
+  margin-top: 22px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  max-width: 70%;
+}
+.feature-top__btn {
+  margin-top: 50px;
+}
+
 
