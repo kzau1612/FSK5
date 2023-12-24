@@ -138,6 +138,7 @@ h2 {
 .search-input::placeholder {
   color: black;
   transition: 0.2s;
+  font-family: "Poppins", sans-serif;
 }
 
 .search-input:focus::placeholder {
