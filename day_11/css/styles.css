@@ -31,7 +31,6 @@ html {
 
 a {
   text-decoration: none;
-  color: #676767;
 }
 
 p {
@@ -207,6 +206,10 @@ h2 {
   margin-top: 40px;
   display: flex;
   align-items: center;
+}
+
+.hero__process-link {
+  color: #2e2e2e;
 }
 
 .btn {
