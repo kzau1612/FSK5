@@ -273,6 +273,10 @@ form {
   line-height: 22px;
 }
 
+.form__link:hover {
+  color: #23d2e2;
+}
+
 .form__btn {
   width: 100%;
   margin-top: 28px;
