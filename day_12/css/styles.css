@@ -290,6 +290,69 @@ form {
   background-image: linear-gradient(rgb(0 0 0/10%) 0 0);
 }
 
+.form-login__social {
+  margin-top: 40px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  position: relative;
+}
+
+.form-login__social::before,
+.form-login__social::after {
+  display: inline-block;
+  content: "";
+  width: 70px;
+  height: 1px;
+  background-color: #eaeaf5;
+  position: absolute;
+  top: 7px;
+}
+
+.form-login__social::before {
+  left: 0;
+}
+
+.form-login__social::after {
+  right: 0;
+}
+
+.social-links {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 12px;
+}
+
+.link {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+.link:hover {
+  translate: 0 -3px;
+}
+
+.facebook {
+  background: #3763d2;
+}
+
+.twitter {
+  background: #1abcff;
+}
+
+.twitch {
+  background: #7b5dfa;
+}
+
+.youtube {
+  background: #fd434f;
+}
+
 .landing-form__register .form__img {
   top: -14px;
   left: -80px;
