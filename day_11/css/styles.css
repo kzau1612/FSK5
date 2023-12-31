@@ -13,7 +13,7 @@ html {
 }
 
 .container {
-  width: 1320px;
+  max-width: 1320px;
   margin: 0 auto;
 }
 
@@ -144,11 +144,27 @@ h2 {
   color: transparent;
 }
 
+.bars {
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  transition: 0.15s ease-in-out;
+  cursor: pointer;
+  display: none;
+}
+
 /* hero */
 
 .hero {
+  position: relative;
+  z-index: 2;
   margin-top: 80px;
   padding-bottom: 120px;
+  transition: 0.3s;
+  background: white;
 }
 
 .hero__inner {
@@ -282,9 +298,10 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 83.3%;
+  flex-shrink: 0;
+  max-width: 83.3%;
   margin: 60px auto 20px;
-  column-gap: 30px;
+  /* column-gap: 30px; */
 }
 
 .service__item {
@@ -292,7 +309,11 @@ h2 {
   position: relative;
   /* align-items: center; */
   width: 33.33%;
-  background: white;
+  border-radius: 10px;
+  flex-shrink: 0;
+  height: 100%;
+  padding: 0 12px;
+  margin: 20px;
 }
 
 .item__inner {
@@ -301,6 +322,7 @@ h2 {
   padding: 50px 28px;
   z-index: 1;
   border-radius: 12px;
+  align-self: stretch;
 }
 
 .bg {
@@ -320,7 +342,7 @@ h2 {
 .service__item:hover .bg {
   opacity: 1;
   top: -3px;
-  left: 15px;
+  left: 28px;
   transform: rotate(-3deg);
 }
 
@@ -549,4 +571,204 @@ h2 {
   line-height: 24px;
   color: #747474;
   margin: 0 10px;
+}
+
+@media screen and (max-width: 991px) {
+  .container {
+    /* padding: 0 80px; */
+    max-width: 720px;
+    /* overflow: hidden scroll; */
+  }
+
+  .header__inner {
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .header-right {
+    position: absolute;
+    flex-direction: column;
+    bottom: -250px;
+    row-gap: 30px;
+  }
+
+  .nav__list {
+    flex-direction: column;
+  }
+
+  .bars {
+    display: block;
+  }
+
+  .hero {
+    padding-top: 80px;
+    margin-top: 0;
+  }
+
+  #bars:checked ~ .hero {
+    margin-top: 300px;
+  }
+
+  .hero__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__title,
+  .hero__title span {
+    font-size: 38px;
+  }
+
+  .hero__desc {
+    font-size: 16px;
+    max-width: 100%;
+  }
+
+  .btn {
+    font-size: 16px;
+    width: 160px;
+  }
+
+  .hero__process {
+    width: 200px;
+    font-size: 16px;
+  }
+
+  /* service */
+
+  .section-title {
+    font-size: 32px;
+    line-height: 44px;
+    max-width: 100%;
+  }
+
+  .service__list {
+    max-width: 100%;
+  }
+
+  .service__item {
+    margin: 0;
+  }
+
+  .service__item-title {
+    font-size: 18px;
+  }
+
+  .service__item-desc {
+    max-width: 100%;
+  }
+
+  .item__inner {
+    padding: 30px 21px;
+  }
+
+  .bg {
+    width: 190px;
+    height: 105%;
+  }
+
+  .service__item:hover .bg {
+    left: 38px;
+  }
+
+  /* feature  */
+  .feature-top,
+  .feature-bottom {
+    flex-direction: column;
+  }
+
+  .feature-top__media,
+  .feature-top__content,
+  .feature-bottom__media,
+  .feature-bottom__content {
+    width: 100%;
+  }
+
+  .top-title {
+    font-size: 16px;
+  }
+
+  .feature__desc {
+    font-size: 16px;
+    max-width: 100%;
+  }
+
+  .feature__btn {
+    width: 180px;
+    padding: 18px 20px;
+    font-size: 16px;
+  }
+
+  .feature-bottom__media {
+    order: 1;
+  }
+
+  .feature-bottom__content {
+    order: 2;
+  }
+  .feature-top__content,
+  .feature-bottom__content {
+    margin: 100px 0 20px 0;
+  }
+
+  /* download */
+  .download__inner {
+    flex-direction: column;
+  }
+
+  .download__media,
+  .download__content {
+    width: 100%;
+  }
+
+  .download__content {
+    margin: 80px 0 20px 0;
+  }
+
+  .download__desc {
+    font-size: 16px;
+    max-width: 90%;
+  }
+
+  .download__btn {
+    padding: 12px 2px;
+  }
+
+  .footer__desc {
+    max-width: 100%;
+  }
+
+  .footer__row {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+  }
+
+  .footer__col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer__col:first-child {
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .footer__col + .footer__col {
+    margin: 30px 0 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer__img {
+    margin: 0 auto;
+  }
+
+  .footer__desc,
+  .footer__link {
+    font-size: 14px;
+  }
+
+  .footer__bottom {
+    padding: 30px 0;
+  }
 }
