@@ -814,7 +814,13 @@ h2 {
   }
 
   .item__inner {
+    width: 100%;
     margin: 0 auto;
+  }
+
+  .bg {
+    width: 96%;
+    left: 20px;
   }
 
   /* feature */
