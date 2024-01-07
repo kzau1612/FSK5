@@ -393,7 +393,8 @@ a {
     transition: 0.2s;
   }
   .sidebar .nav__link:hover {
-    background-color: white !important;
+    background-color: gray !important;
+    color: white;
   }
   .sidebar .icon-wrapper {
     position: fixed;
