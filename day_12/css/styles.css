@@ -73,11 +73,14 @@ input {
   font-weight: 900;
   position: relative;
   margin-top: -10px;
+  text-transform: uppercase;
   /* top: -10px; */
 }
 
 .landing__subtitle {
   display: block;
+  font-family: "Rajdhani", sans-serif;
+
   width: 100%;
   margin-top: 36px;
   font-size: 1.5rem;
@@ -119,8 +122,8 @@ input {
   border-radius: 0 10px 10px 0;
 }
 
-#login:checked ~ .landing-content .landing-action .login-btn,
-#register:checked ~ .landing-content .landing-action .register-btn {
+#login:checked ~ .container .landing-content .landing-action .login-btn,
+#register:checked ~ .container .landing-content .landing-action .register-btn {
   color: #3e3f5e;
   background-color: #fff;
   cursor: auto;
@@ -369,8 +372,8 @@ form {
   background: #23d2e2;
 }
 
-#register:checked ~ .landing-form .landing-form__login,
-#login:checked ~ .landing-form .landing-form__register {
+#register:checked ~ .container .landing-form .landing-form__login,
+#login:checked ~ .container .landing-form .landing-form__register {
   transform: translate(50%, 0px);
   opacity: 0;
   visibility: hidden;
@@ -380,7 +383,7 @@ form {
   transition: all 0.6s ease-in-out 0s;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1365px) {
   .landing {
     max-width: 100%;
     max-height: 100%;
@@ -404,6 +407,10 @@ form {
     display: none;
   }
 
+  .landing__desc {
+    display: none;
+  }
+
   #register:checked ~ .landing-form .landing-form__login,
   #login:checked ~ .landing-form .landing-form__register {
     transform: translate(0px, 0px);
@@ -413,5 +420,33 @@ form {
     /* z-index: 0; */
     left: auto;
     transition: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .landing-content,
+  .landing-form {
+    width: 100%;
+  }
+  .form {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .landing__title {
+    margin-top: 0;
+    font-size: 3.75rem;
+    line-height: 0.8;
+  }
+
+  .landing-action {
+    margin-top: 20px;
   }
 }
