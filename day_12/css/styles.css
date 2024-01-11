@@ -424,10 +424,11 @@ form {
 }
 
 @media screen and (max-width: 600px) {
-  .landing-content,
   .landing-form {
     width: 100%;
   }
+
+  .landing-content,
   .form {
     width: 90%;
   }
