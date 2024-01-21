@@ -1,0 +1,103 @@
+@font-face {
+  font-family: SFU;
+  src: url(../font/SFUTradeGothic-BoldCondensedTwenty.woff2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Asap", sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 1600px;
+}
+
+.background {
+  /* display: inline-block; */
+  position: relative;
+  z-index: 0;
+  background: rgba(0, 0, 0, 0.5) url(../img/BT2.jpg) center/cover no-repeat;
+  height: 350px;
+  width: 100%;
+  /* filter: brightness(80%); */
+  background-blend-mode: darken;
+}
+
+.background__img {
+  position: absolute;
+  width: 200px;
+  background: white;
+  padding: 50px 40px 10px;
+  bottom: 0;
+  left: 50px;
+  border-radius: 4px 4px 0 0;
+}
+
+.background-content {
+  position: absolute;
+  color: white;
+  bottom: 36px;
+  left: 270px;
+}
+
+.background-content__title {
+  font-weight: 600;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.stat-big {
+  font-size: 30px;
+  font-family: SFU;
+  margin-right: 30px;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  column-gap: 30px;
+  margin-right: 50px;
+  margin-top: 30px;
+}
+
+.nav-item {
+  position: relative;
+  list-style-type: none;
+  margin-right: 30px;
+}
+
+span::after {
+  position: absolute;
+  display: none;
+  content: "";
+  height: 5px;
+  width: 100%;
+  background: #dc5e55;
+  bottom: -20px;
+  left: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+
+a:hover {
+  color: #dc5e55;
+  border-bottom: 5px solid #dc5e55;
+}
+
+/* a:hover span::after {
+  display: inline-block;
+} */

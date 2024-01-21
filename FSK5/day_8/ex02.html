@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BT2</title>
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/BT2.css" />
+  </head>
+  <body>
+    <section>
+      <input type="checkbox" name="cart" id="cart" hidden />
+      <label for="cart"
+        ><img src="./icon/shopping.svg" alt="cart" class="shopping"
+      /></label>
+      <label for="cart" class="overlay"></label>
+      <div class="cart">
+        <div class="cart-header">
+          <h3 class="cart-header__title">Shopping Cart</h3>
+          <label for="cart" class="cart__close_btn"
+            ><img src="icon/close.svg" alt="close"
+          /></label>
+        </div>
+        <div class="cart-body">
+          <div class="cart-body__item">
+            <a href="#!" class="item__image"
+              ><img src="./img/iphone.webp" alt="iphone"
+            /></a>
+            <div class="item__body">
+              <a href="#!">Affinity Queen Poster Bed</a>
+              <div class="row">
+                <div class="item__quantity">
+                  <span class="change-quantity">-</span>
+                  <span>1</span>
+                  <span class="change-quantity">+</span>
+                </div>
+                <span class="item__price">1x $570</span>
+              </div>
+            </div>
+            <img
+              src="./icon/close_small.svg"
+              alt="close"
+              class="item__close-btn"
+            />
+          </div>
+          <div class="cart-body__item">
+            <a href="#!" class="item__image"
+              ><img src="./img/iphone.webp" alt="iphone"
+            /></a>
+            <div class="item__body">
+              <a href="#!">Affinity Queen Poster Bed</a>
+              <div class="row">
+                <div class="item__quantity">
+                  <span class="change-quantity">-</span>
+                  <span>1</span>
+                  <span class="change-quantity">+</span>
+                </div>
+                <span class="item__price">1x $570</span>
+              </div>
+            </div>
+            <img
+              src="./icon/close_small.svg"
+              alt="close"
+              class="item__close-btn"
+            />
+          </div>
+          <div class="cart__subtotal">
+            <span>Subtotal</span>
+            <span>$920.00</span>
+          </div>
+          <span class="cart__note"
+            >Taxes and shipping calculated at checkout</span
+          >
+          <a href="#!" class="cart__view-cart">View Cart</a>
+          <a href="#!" class="cart__add">Add To Cart</a>
+          <div class="cart__shipping">
+            <img
+              src="./icon/shipping.svg"
+              alt="shipping"
+              class="shipping__icon"
+            />
+            <span class="shipping__note">Spend $ 499.00 to Free Shipping</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

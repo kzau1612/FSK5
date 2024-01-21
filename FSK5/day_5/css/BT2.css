@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 20px;
+}
+
+label {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+}
+
+.section {
+  padding: 20px;
+}
+
+h4 {
+  background: #d95924;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+label {
+  padding-left: 30px;
+}
+
+label::before {
+  position: absolute;
+  content: "+";
+  font-size: 20px;
+  left: 10px;
+  font-weight: 900;
+  color: white;
+}
+
+input {
+  display: none;
+}
+
+input:checked + h4 + .body {
+  display: block;
+}
+
+input:checked + h4 label::before {
+  content: "-";
+}
+
+.body {
+  display: none;
+}

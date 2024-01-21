@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  background: gray;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  width: 800px;
+  height: 500px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  background: white;
+}
+
+label {
+  cursor: pointer;
+  flex: 1;
+  text-align: center;
+  display: inline-block;
+  padding: 20px;
+  border: 1px solid gray;
+}
+
+.menu {
+  display: flex;
+  flex: 1;
+}
+
+#radio-1:checked ~ .menu label:nth-child(1),
+#radio-2:checked ~ .menu label:nth-child(2),
+#radio-3:checked ~ .menu label:nth-child(3),
+#radio-4:checked ~ .menu label:nth-child(4) {
+  background: #4298db;
+}
+
+#radio-1:checked ~ .list .item-1,
+#radio-2:checked ~ .list .item-2,
+#radio-3:checked ~ .list .item-3,
+#radio-4:checked ~ .list .item-4 {
+  opacity: 1;
+  transition-delay: 0.2s;
+  transform: rotateX(0);
+}
+
+.list {
+  position: relative;
+  display: flex;
+}
+
+.item {
+  background: white;
+  position: absolute;
+  border: 1px solid gray;
+  height: 300px;
+  width: 100%;
+  padding: 30px;
+  top: 0;
+  left: 0;
+  transform-origin: top;
+  transform: rotateX(70deg);
+  opacity: 0;
+  transition: 0.4s;
+  overflow: scroll;
+}

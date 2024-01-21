@@ -1,0 +1,131 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  font-family: "Asap", sans-serif;
+}
+
+.container {
+  width: 1600px;
+  padding-top: 30px;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 600;
+  position: relative;
+}
+
+h2::after {
+  position: absolute;
+  display: inline-block;
+  content: "";
+  height: 1px;
+  width: 60%;
+  background: grey;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 35px;
+  /* column-gap: 20px; */
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 30px;
+  row-gap: 10px;
+  list-style: none;
+  background: #e5e5e5;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.3s;
+  /* transition: background-color 1s, color 1s; */
+}
+
+.nav-item:hover {
+  background: #af7b37;
+  color: white;
+}
+
+.nav-item span {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.districts {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 30px;
+  margin-top: 35px;
+
+  /* justify-content: space-between; */
+}
+
+.districts-item {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  border-radius: 7px;
+  padding: 30px;
+  justify-content: space-between;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: darken;
+  cursor: pointer;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.districts-item:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px 1px #333;
+}
+
+.districts-item:nth-child(1) {
+  background: rgba(0, 0, 0, 0.3) url(../img/quan2.jpg) center/cover no-repeat;
+}
+
+.districts-item:nth-child(2) {
+  background: rgba(0, 0, 0, 0.3) url(../img/quan7.jpg) center/cover no-repeat;
+}
+
+.districts-item:nth-child(3) {
+  background: rgba(0, 0, 0, 0.3) url(../img/quan9.jpg) center/cover no-repeat;
+}
+.districts-item:nth-child(4) {
+  background: rgba(0, 0, 0, 0.3) url(../img/tanbinh.jpeg) center/cover no-repeat;
+}
+.districts-item:nth-child(5) {
+  background: rgba(0, 0, 0, 0.3) url(../img/thuduc.jpg) center/cover no-repeat;
+}
+.districts-item:nth-child(6) {
+  background: rgba(0, 0, 0, 0.3) url(../img/binhchanh.webp) center/cover
+    no-repeat;
+}
+
+.districts-name {
+  font-size: 30px;
+}
+
+.stats {
+  font-weight: 600;
+  font-size: 20px;
+}

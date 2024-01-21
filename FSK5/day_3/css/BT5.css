@@ -1,0 +1,30 @@
+body {
+  font-family: sans-serif;
+  margin-top: 20px;
+}
+
+div {
+  text-align: center;
+}
+
+.box {
+  display: inline-block;
+  background: hwb(223 52% 20%);
+  padding: 15px 60px;
+  color: white;
+}
+
+span {
+  color: #0ca9e3;
+}
+
+button {
+  background: #000;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button:last-child {
+  margin-left: 20px;
+}

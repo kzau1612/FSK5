@@ -1,0 +1,343 @@
+/* xay dung thu vien grid system */
+/* 
+- Chia chieu ngang thanh 12 o bang nhau
+- Dung so de the hien so o: .col-(number). VD: .col-1, .col-2, .col-3... .col-12
+- Dung class .row de the hien flex container
+- Dung class .container de the hien container cua trang web
+
+Responsive: Quy uoc breakpoint (theo mobile first)
+- .col-{number}: < 576px
+- .col-sm-{number} >= 576px
+- .col-md-{number} >= 768px
+- .col-lg-{number} >= 992px
+- .col-xl-{number} >= 1200px
+- .col-xxl-{number} >= 1400px
+
+Cu phap chung: .col-{breakpoint}-{number}
+Neu class khong co breakpoint -> man hinh nho nhat
+    */
+:root {
+  --container-width: 1200px;
+  --grid-column: 12;
+  --column-space: 40px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 calc(-1 * var(--column-space) / 2);
+}
+
+[class^="col-"] {
+  flex: 0 0 calc(100% / (var(--grid-column) / var(--column-size)));
+  max-width: calc(100% / (var(--grid-column) / var(--column-size)));
+  /* padding: 0 calc(var(--column-space) / 2); */
+}
+
+.col-1 {
+  --column-size: 1;
+}
+
+.col-2 {
+  --column-size: 2;
+}
+
+.col-3 {
+  --column-size: 3;
+}
+
+.col-4 {
+  --column-size: 4;
+}
+
+.col-5 {
+  --column-size: 5;
+}
+
+.col-6 {
+  --column-size: 6;
+}
+
+.col-7 {
+  --column-size: 7;
+}
+
+.col-8 {
+  --column-size: 8;
+}
+
+.col-9 {
+  --column-size: 9;
+}
+
+.col-10 {
+  --column-size: 10;
+}
+
+.col-11 {
+  --column-size: 11;
+}
+
+.col-12 {
+  --column-size: 12;
+}
+
+@media screen and (min-width: 576px) {
+  .col-sm-1 {
+    --column-size: 1;
+  }
+
+  .col-sm-2 {
+    --column-size: 2;
+  }
+
+  .col-sm-3 {
+    --column-size: 3;
+  }
+
+  .col-sm-4 {
+    --column-size: 4;
+  }
+
+  .col-sm-5 {
+    --column-size: 5;
+  }
+
+  .col-sm-6 {
+    --column-size: 6;
+  }
+
+  .col-sm-7 {
+    --column-size: 7;
+  }
+
+  .col-sm-8 {
+    --column-size: 8;
+  }
+
+  .col-sm-9 {
+    --column-size: 9;
+  }
+
+  .col-sm-10 {
+    --column-size: 10;
+  }
+
+  .col-sm-11 {
+    --column-size: 11;
+  }
+
+  .col-sm-12 {
+    --column-size: 12;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .col-md-1 {
+    --column-size: 1;
+  }
+
+  .col-md-2 {
+    --column-size: 2;
+  }
+
+  .col-md-3 {
+    --column-size: 3;
+  }
+
+  .col-md-4 {
+    --column-size: 4;
+  }
+
+  .col-md-5 {
+    --column-size: 5;
+  }
+
+  .col-md-6 {
+    --column-size: 6;
+  }
+
+  .col-md-7 {
+    --column-size: 7;
+  }
+
+  .col-md-8 {
+    --column-size: 8;
+  }
+
+  .col-md-9 {
+    --column-size: 9;
+  }
+
+  .col-md-10 {
+    --column-size: 10;
+  }
+
+  .col-md-11 {
+    --column-size: 11;
+  }
+
+  .col-md-12 {
+    --column-size: 12;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .col-lg-1 {
+    --column-size: 1;
+  }
+
+  .col-lg-2 {
+    --column-size: 2;
+  }
+
+  .col-lg-3 {
+    --column-size: 3;
+  }
+
+  .col-lg-4 {
+    --column-size: 4;
+  }
+
+  .col-lg-5 {
+    --column-size: 5;
+  }
+
+  .col-lg-6 {
+    --column-size: 6;
+  }
+
+  .col-lg-7 {
+    --column-size: 7;
+  }
+
+  .col-lg-8 {
+    --column-size: 8;
+  }
+
+  .col-lg-9 {
+    --column-size: 9;
+  }
+
+  .col-lg-10 {
+    --column-size: 10;
+  }
+
+  .col-lg-11 {
+    --column-size: 11;
+  }
+
+  .col-lg-12 {
+    --column-size: 12;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .col-xl-1 {
+    --column-size: 1;
+  }
+
+  .col-xl-2 {
+    --column-size: 2;
+  }
+
+  .col-xl-3 {
+    --column-size: 3;
+  }
+
+  .col-xl-4 {
+    --column-size: 4;
+  }
+
+  .col-xl-5 {
+    --column-size: 5;
+  }
+
+  .col-xl-6 {
+    --column-size: 6;
+  }
+
+  .col-xl-7 {
+    --column-size: 7;
+  }
+
+  .col-xl-8 {
+    --column-size: 8;
+  }
+
+  .col-xl-9 {
+    --column-size: 9;
+  }
+
+  .col-xl-10 {
+    --column-size: 10;
+  }
+
+  .col-xl-11 {
+    --column-size: 11;
+  }
+
+  .col-xl-12 {
+    --column-size: 12;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .col-xxl-1 {
+    --column-size: 1;
+  }
+
+  .col-xxl-2 {
+    --column-size: 2;
+  }
+
+  .col-xxl-3 {
+    --column-size: 3;
+  }
+
+  .col-xxl-4 {
+    --column-size: 4;
+  }
+
+  .col-xxl-5 {
+    --column-size: 5;
+  }
+
+  .col-xxl-6 {
+    --column-size: 6;
+  }
+
+  .col-xxl-7 {
+    --column-size: 7;
+  }
+
+  .col-xxl-8 {
+    --column-size: 8;
+  }
+
+  .col-xxl-9 {
+    --column-size: 9;
+  }
+
+  .col-xxl-10 {
+    --column-size: 10;
+  }
+
+  .col-xxl-11 {
+    --column-size: 11;
+  }
+
+  .col-xxl-12 {
+    --column-size: 12;
+  }
+}
