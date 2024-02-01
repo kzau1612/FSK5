@@ -10,11 +10,12 @@ for (var i of arr) {
   p.appendChild(span);
 }
 
-console.log(p.children.length);
 function changeColor() {
   var spans = document.querySelectorAll("span");
   if (index > 0) {
-    spans[index - 1].style.color = "";
+    spans[index - 1].style.color = "black";
+  } else {
+    spans[spans.length - 1].style.color = "black";
   }
   spans[index].style.color = "red";
   index = (index + 1) % spans.length;
