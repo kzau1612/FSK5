@@ -12,8 +12,6 @@ function sortArray(arr) {
   return arr;
 }
 
-var arr = [1, 3, 5, 4, 2];
-
 function insertNum(arr, num) {
   var index = 0;
   for (var i = 0; i < arr.length; i++) {
@@ -28,4 +26,6 @@ function insertNum(arr, num) {
   return arr;
 }
 
-console.log(insertNum(sortArray(arr), 6));
+var arr = [1, 3, 5, 4, 2];
+var number = 3;
+console.log(insertNum(sortArray(arr), number));
