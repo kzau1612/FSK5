@@ -25,9 +25,9 @@ for (var i = 0; i < a.length; i++) {
 
 if (count === 0) {
   console.log("Không có số nguyên tố");
+} else {
+  result = total / count;
+  console.log(total);
+  console.log(count);
+  console.log(`Trung binh cac so nguyen to la: ${result}`);
 }
-
-result = total / count;
-console.log(total);
-console.log(count);
-console.log(`Trung binh cac so nguyen to la: ${result}`);
