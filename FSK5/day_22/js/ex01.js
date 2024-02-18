@@ -3,7 +3,7 @@ var arrB = [5, 2, 6, 7, 1];
 
 var result = [];
 for (var i = 0; i < arrA.length; i++) {
-  var findnum = arrB.find((number) => {
+  arrB.forEach((number) => {
     if (number === arrA[i]) {
       result.push(number);
     }
