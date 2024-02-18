@@ -6,6 +6,9 @@ var arr = [
 var stringArr = [];
 var numberArr = [];
 var booleanArr = [];
+var nullArr = [];
+var undefinedArr = [];
+var objectArr = [];
 
 arr.forEach(function (element) {
   element.forEach(function (innerElement) {
@@ -18,9 +21,25 @@ arr.forEach(function (element) {
     if (typeof innerElement === "boolean") {
       booleanArr.push(innerElement);
     }
+    if (innerElement === null) {
+      nullArr.push(innerElement);
+    }
+    if (typeof innerElement === "undefined") {
+      undefinedArr.push(innerElement);
+    }
+    if (typeof innerElement === "object") {
+      objectArr.push(innerElement);
+    }
   });
 });
 
 var newArr = [];
-newArr.push(stringArr, numberArr, booleanArr);
-console.log(newArr);
+var result = [];
+newArr.push(stringArr, numberArr, booleanArr, nullArr, undefinedArr, objectArr);
+newArr.forEach(function (arr) {
+  if (arr.length !== 0) {
+    result.push(arr);
+  }
+});
+
+console.log(result);
