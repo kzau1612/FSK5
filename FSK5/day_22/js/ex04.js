@@ -12,7 +12,7 @@ var arr = [
   {
     img: "https://picsum.photos/200",
     title: "title 3",
-    desc: "desc 3",
+    desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam ex at fugiat consequuntur rem obcaecati autem a harum saepe temporibus. Nemo laboriosam odio vero deleniti explicabo. Nulla quos repellat porro delectus, commodi rem voluptas non ipsa saepe? Ducimus eum voluptate harum deserunt laudantium delectus ipsum, accusantium repellat, fuga neque possimus.",
   },
 ];
 
