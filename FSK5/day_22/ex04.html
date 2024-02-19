@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .item {
+      display: flex;
+      column-gap: 50px;
+      padding: 20px;
+    }
+    .title {
+      font-weight: 800;
+      font-size: 30px;
+    }
+
+    .desc {
+      font-size: 20px;
+    }
+
+    .item + .item {
+      border-top: 1px solid #333;
+    }
+
+    .item:nth-child(even) {
+      justify-content: flex-start;
+      flex-direction: row-reverse;
+    }
+  </style>
+  <body>
+    <div class="container"></div>
+    <script src="./js/ex04.js"></script>
+  </body>
+</html>
