@@ -15,7 +15,6 @@ const customers = [
 
 function createCustomers(object) {
   const newCustomers = customers.slice(0);
-  let temp = {};
   if (typeof object !== "object") {
     return null;
   }
