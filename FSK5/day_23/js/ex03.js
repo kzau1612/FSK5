@@ -13,11 +13,9 @@ function register(name, password, email) {
   return newUser;
 }
 
-function login(name, password) {
+function login(email, password) {
   const user = data.find(function (user) {
-    if (user.name === name && user.password === password) {
-      return user;
-    }
+    return user.email === email && user.password === password;
   });
   if (!user) {
     return "Thông tin đăng nhập không hợp lệ";
@@ -36,7 +34,7 @@ const dataRegister2 = register(
   "nguyenvanb@email.com"
 );
 
-const dataLogin = login("Nguyen Van B", "1234567");
+const dataLogin = login("nguyenvanb@email.com", "1234567");
 
 // console.log(data);
 console.log(dataLogin);
