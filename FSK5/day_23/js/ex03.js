@@ -1,14 +1,16 @@
+function User(name, password, email) {
+  this.name = name;
+  this.password = password;
+  this.email = email;
+  this.role = "user";
+}
+
 const data = [];
 function register(name, password, email) {
   if (!name || !password || !email) {
     return false;
   }
-  const newUser = {
-    name: name,
-    password: password,
-    email: email,
-    role: "user",
-  };
+  const newUser = new User(name, password, email);
   data.push(newUser);
   return newUser;
 }
@@ -36,5 +38,5 @@ const dataRegister2 = register(
 
 const dataLogin = login("nguyenvanb@email.com", "1234567");
 
-// console.log(data);
+console.log(data);
 console.log(dataLogin);
