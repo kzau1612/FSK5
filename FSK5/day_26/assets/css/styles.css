@@ -178,6 +178,7 @@ label + span svg {
   translate: 0 -50%;
   cursor: pointer;
   background: white;
+  user-select: none;
 }
 
 .hidden {
