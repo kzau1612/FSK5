@@ -162,3 +162,39 @@ input {
 .error {
   border: 1px solid red;
 }
+
+input {
+  width: 100%;
+}
+
+label + span {
+  position: relative;
+}
+
+label + span svg {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  translate: 0 -50%;
+  cursor: pointer;
+  background: white;
+}
+
+.hidden {
+  display: none;
+}
+
+.login {
+  font-size: 50px;
+  cursor: pointer;
+}
+
+.close-form {
+  position: absolute;
+  left: 0;
+  z-index: 3;
+  top: 20px;
+  left: calc(100% - 20px);
+  translate: -100% 0;
+  cursor: pointer;
+}
