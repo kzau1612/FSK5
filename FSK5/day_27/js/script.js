@@ -4,6 +4,8 @@ var list = document.querySelector(".list");
 var form = document.querySelector(".form");
 var taskList = [];
 
+console.log(form.children);
+
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   var inputValue = input.value.trim();
@@ -68,10 +70,13 @@ function renderList(arr) {
 }
 
 list.addEventListener("click", function (e) {
-  console.log(e.target);
-  if (e.target.classList.contains("edit-btn")) {
-    var itemInner = e.target.closest(".item__inner");
-    var item = e.target.closest(".item");
+  var target = e.target;
+  if (e.target.tagName === "path") {
+    var target = target.closest("svg");
+  }
+  if (target.classList.contains("edit-btn")) {
+    var itemInner = target.closest(".item__inner");
+    var item = target.closest(".item");
     var form = item.querySelector(".form");
     form.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -89,8 +94,8 @@ list.addEventListener("click", function (e) {
     });
     form.classList.remove("hidden");
     itemInner.classList.add("hidden");
-  } else if (e.target.classList.contains("delete-btn")) {
-    var item = e.target.closest(".item");
+  } else if (target.classList.contains("delete-btn")) {
+    var item = target.closest(".item");
     var index = Array.from(list.children).indexOf(item);
     taskList.splice(index, 1);
     console.log(taskList);
