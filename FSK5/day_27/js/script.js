@@ -1,17 +1,11 @@
 var input = document.querySelector(".input");
 var addBtn = document.querySelector(".add-btn");
 var list = document.querySelector(".list");
-var forms = document.querySelectorAll(".form");
+var form = document.querySelector(".form");
 var taskList = [];
 
-forms.forEach(function (form) {
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-  });
-});
-// console.log(addBtn);
-
-addBtn.addEventListener("click", function (e) {
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
   var inputValue = input.value.trim();
   if (inputValue) {
     taskList.push(inputValue);
@@ -66,7 +60,7 @@ function renderList(arr) {
         placeholder="Update task"
         value = "${e}"
       />
-      <button class="add-btn">Add Task</button>
+      <button class="btn">Add Task</button>
     </form>
   </li>`;
   });
@@ -74,21 +68,32 @@ function renderList(arr) {
 }
 
 list.addEventListener("click", function (e) {
+  console.log(e.target);
   if (e.target.classList.contains("edit-btn")) {
     var itemInner = e.target.closest(".item__inner");
     var item = e.target.closest(".item");
     var form = item.querySelector(".form");
-    form.classList.toggle("hidden");
-    itemInner.classList.toggle("hidden");
-    // if (newTask !== null) {
-    //   taskList[taskIndex] = newTask;
-    //   renderList(taskList);
-    // }
-    //   } else if (e.target.classList.contains("delete-btn")) {
-    //     var listItem = e.target.closest(".item");
-    //     var form
-    //     var taskIndex = Array.from(list.children).indexOf(listItem);
-    //     taskList.splice(taskIndex, 1);
-    //     renderList(taskList);
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      var newInput = form.querySelector(".input").value.trim();
+      if (newInput) {
+        var index = Array.from(list.children).indexOf(item);
+        taskList[index] = newInput;
+        renderList(taskList);
+        form.classList.add("hidden");
+        itemInner.classList.remove("hidden");
+      } else {
+        alert("Value must not be empty");
+      }
+    });
+    form.classList.remove("hidden");
+    itemInner.classList.add("hidden");
+  } else if (e.target.classList.contains("delete-btn")) {
+    var item = e.target.closest(".item");
+    var index = Array.from(list.children).indexOf(item);
+    taskList.splice(index, 1);
+    console.log(taskList);
+    renderList(taskList);
   }
 });
