@@ -3,8 +3,8 @@ var addBtn = document.querySelector(".add-btn");
 var list = document.querySelector(".list");
 var form = document.querySelector(".form");
 var taskList = [];
-
-console.log(form.children);
+var isEditing = false;
+var editIndex = undefined;
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -16,13 +16,13 @@ form.addEventListener("submit", function (e) {
   }
 });
 
-console.log(taskList);
-
 function renderList(arr) {
   var html = "";
-  arr.forEach(function (e) {
+  arr.forEach(function (e, index) {
     html += `<li class="item">
-    <div class="item__inner">
+    <div class="item__inner ${
+      isEditing && editIndex === index ? "hidden" : ""
+    }">
       <span class="item-name">${e}</span>
       <div class="item-actions">
         <svg
@@ -55,7 +55,7 @@ function renderList(arr) {
         </svg>
       </div>
     </div>
-    <form class="form hidden">
+    <form class="form ${isEditing && editIndex === index ? "" : "hidden"}">
       <input
         type="text"
         class="input"
@@ -66,6 +66,7 @@ function renderList(arr) {
     </form>
   </li>`;
   });
+
   list.innerHTML = html;
 }
 
@@ -78,16 +79,23 @@ list.addEventListener("click", function (e) {
     var itemInner = target.closest(".item__inner");
     var item = target.closest(".item");
     var form = item.querySelector(".form");
+
+    var index = Array.from(list.children).indexOf(item);
+
+    editIndex = index;
+    isEditing = true;
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
       var newInput = form.querySelector(".input").value.trim();
       if (newInput) {
-        var index = Array.from(list.children).indexOf(item);
         taskList[index] = newInput;
+        isEditing = false;
+        editIndex = undefined;
         renderList(taskList);
-        form.classList.add("hidden");
-        itemInner.classList.remove("hidden");
+        // form.classList.add("hidden");
+        // itemInner.classList.remove("hidden");
       } else {
         alert("Value must not be empty");
       }
