@@ -5,6 +5,7 @@ var form = document.querySelector(".form");
 var taskList = [];
 var isEditing = false;
 var editIndex = undefined;
+var v = undefined;
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -20,8 +21,8 @@ function renderList(arr) {
   var html = "";
   arr.forEach(function (e, index) {
     html += `<li class="item">
-    <div class="item__inner ${
-      isEditing && editIndex === index ? "hidden" : ""
+    <div class="item__inner" style="display: ${
+      isEditing && editIndex === index ? "none" : ""
     }">
       <span class="item-name">${e}</span>
       <div class="item-actions">
@@ -55,18 +56,19 @@ function renderList(arr) {
         </svg>
       </div>
     </div>
-    <form class="form ${isEditing && editIndex === index ? "" : "hidden"}">
+    <form class="form" style="display: ${
+      isEditing && editIndex === index ? "" : "none"
+    };">
       <input
         type="text"
         class="input"
         placeholder="Update task"
-        value = "${e}"
+        value = "${isEditing && editIndex === index ? v : e}"
       />
       <button class="btn">Add Task</button>
     </form>
   </li>`;
   });
-
   list.innerHTML = html;
 }
 
@@ -81,10 +83,13 @@ list.addEventListener("click", function (e) {
     var form = item.querySelector(".form");
 
     var index = Array.from(list.children).indexOf(item);
-
     editIndex = index;
     isEditing = true;
-
+    var input = form.querySelector(".input");
+    input.addEventListener("change", (e) => {
+      v = e.target.value;
+      console.log(v);
+    });
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
@@ -100,8 +105,8 @@ list.addEventListener("click", function (e) {
         alert("Value must not be empty");
       }
     });
-    form.classList.remove("hidden");
-    itemInner.classList.add("hidden");
+    form.style.display = "flex";
+    itemInner.style.display = "none";
   } else if (target.classList.contains("delete-btn")) {
     var item = target.closest(".item");
     var index = Array.from(list.children).indexOf(item);
