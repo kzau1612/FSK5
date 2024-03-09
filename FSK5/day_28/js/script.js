@@ -31,6 +31,7 @@ carouselNextBtn.addEventListener("click", function () {
   }
   translateX -= itemWidth;
   index++;
+  console.log(translateX);
   setActiveDot();
   carouselImages.style.translate = `${translateX}px`;
 });
@@ -53,10 +54,20 @@ for (let i = 0; i < carouselItems.length; i++) {
   carouselDots.appendChild(span);
 }
 
-//Xử lí active
+//Xử lí click dot
+var dots = carouselDots.querySelectorAll("span");
+dots.forEach((dot, i) => {
+  dot.addEventListener("click", () => {
+    translateX = -1 * itemWidth * i;
+    index = i;
+    setActiveDot();
 
+    carouselImages.style.translate = `${translateX}px`;
+  });
+});
+
+//Xử lí active
 function setActiveDot() {
-  var dots = carouselDots.querySelectorAll("span");
   var activeDots = carouselDots.querySelector(".active");
   if (activeDots) {
     activeDots.classList.remove("active");
