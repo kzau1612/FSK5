@@ -31,7 +31,7 @@ carouselNextBtn.addEventListener("click", function () {
   }
   translateX -= itemWidth;
   index++;
-  console.log(translateX);
+  lastPos = translateX;
   setActiveDot();
   carouselImages.style.translate = `${translateX}px`;
 });
@@ -44,6 +44,7 @@ carouselPrevBtn.addEventListener("click", function () {
   translateX += itemWidth;
   // console.log(translateX);
   index--;
+  lastPos = translateX;
   setActiveDot();
   carouselImages.style.translate = `${translateX}px`;
 });
@@ -55,15 +56,65 @@ for (let i = 0; i < carouselItems.length; i++) {
 }
 
 //Xử lí click dot
+
 var dots = carouselDots.querySelectorAll("span");
 dots.forEach((dot, i) => {
   dot.addEventListener("click", () => {
     translateX = -1 * itemWidth * i;
     index = i;
+    lastPos = translateX;
     setActiveDot();
-
     carouselImages.style.translate = `${translateX}px`;
   });
+});
+
+//keo tha
+var startPos = 0;
+var lastPos = 0;
+var x = 0;
+var handleDrag = function (e) {
+  x = startPos - e.clientX;
+  if ((index == 0 && x < 0) || (index === carouselItems.length - 1 && x > 0)) {
+    return;
+  }
+  carouselImages.style.translate = `${lastPos - x}px`;
+
+  if (e.clientX <= startPos - 300) {
+    carouselImages.style.transition = "translate 0.3s linear";
+    document.removeEventListener("mousemove", handleDrag);
+    translateX -= itemWidth;
+    lastPos = translateX;
+    index++;
+    setActiveDot();
+    carouselImages.style.translate = `${translateX}px`;
+  }
+  if (e.clientX >= startPos + 300) {
+    carouselImages.style.transition = "translate 0.3s linear";
+    document.removeEventListener("mousemove", handleDrag);
+
+    translateX += itemWidth;
+    lastPos = translateX;
+    index--;
+    setActiveDot();
+    carouselImages.style.translate = `${translateX}px`;
+  }
+};
+
+document.addEventListener("mousedown", (e) => {
+  carouselImages.style.transition = "none";
+  startPos = e.clientX;
+  document.addEventListener("mousemove", handleDrag);
+});
+
+document.addEventListener("mouseup", (e) => {
+  if (e.clientX > startPos - 300) {
+    carouselImages.style.transition = "translate 0.3s linear";
+    carouselImages.style.translate = `${translateX}px`;
+  } else if (e.clientX < startPos + 300) {
+    carouselImages.style.transition = "translate 0.3s linear";
+    carouselImages.style.translate = `${translateX}px`;
+  }
+  document.removeEventListener("mousemove", handleDrag);
 });
 
 //Xử lí active

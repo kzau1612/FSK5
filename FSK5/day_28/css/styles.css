@@ -14,9 +14,15 @@
   transition: translate 0.3s linear;
 }
 
+.carousel-images:active {
+  cursor: pointer;
+}
+
 img {
-  max-width: 100%;
+  /* max-width: 100%; */
+  width: 100%;
   height: auto;
+  -webkit-user-drag: none;
 }
 
 .carousel-nav span {
@@ -36,12 +42,12 @@ img {
   cursor: pointer;
 }
 
-.carousel-nav .pre {
-  left: 5px;
+.carousel-nav .prev {
+  left: 10px;
 }
 
 .carousel-nav .next {
-  right: 5px;
+  right: 10px;
 }
 
 .carousel-dots {
@@ -64,6 +70,14 @@ img {
   cursor: pointer;
 }
 
+.carousel-dots span:hover {
+  background: orange;
+}
+
 .carousel span.active {
   background: orange;
+}
+
+.item {
+  width: 100%;
 }
