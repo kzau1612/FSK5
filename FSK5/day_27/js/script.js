@@ -63,7 +63,7 @@ function renderList(arr) {
         type="text"
         class="input"
         placeholder="Update task"
-        value = "${isEditing && editIndex === index ? v : e}"
+        value = "${isEditing && v && editIndex === index ? v : e}"
       />
       <button class="btn">Add Task</button>
     </form>
