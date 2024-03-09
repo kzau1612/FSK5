@@ -107,10 +107,7 @@ document.addEventListener("mousedown", (e) => {
 });
 
 document.addEventListener("mouseup", (e) => {
-  if (e.clientX > startPos - 300) {
-    carouselImages.style.transition = "translate 0.3s linear";
-    carouselImages.style.translate = `${translateX}px`;
-  } else if (e.clientX < startPos + 300) {
+  if (e.clientX > startPos - 300 || e.clientX < startPos + 300) {
     carouselImages.style.transition = "translate 0.3s linear";
     carouselImages.style.translate = `${translateX}px`;
   }
