@@ -35,6 +35,7 @@ span.addEventListener("mousedown", function (e) {
 
 span.addEventListener("mousemove", function (e) {
   e.stopPropagation();
+  timeDisplay.style.display = "none";
 });
 
 document.addEventListener("mouseup", function (e) {
