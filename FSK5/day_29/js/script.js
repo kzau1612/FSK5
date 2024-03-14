@@ -136,3 +136,11 @@ progressBar.addEventListener("mousemove", function (e) {
 progressBar.addEventListener("mouseleave", function (e) {
   timeDisplay.style.display = "none";
 });
+
+audio.addEventListener("ended", function () {
+  audio.currentTime = 0;
+  playBtn.classList.remove("fa-pause");
+  playBtn.classList.add("fa-play");
+  progress.style.width = "0%";
+  currentTime.innerText = getTime(audio.currentTime);
+});
