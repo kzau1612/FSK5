@@ -1,6 +1,8 @@
 var progressBar = document.querySelector(".progress-bar");
 var progress = document.querySelector(".progress");
 var span = document.querySelector(".progress span");
+var timeDisplay = document.querySelector(".time-display");
+
 //vị trí của nút so với bar
 var mousePos = 0;
 var rate = 0;
@@ -23,11 +25,16 @@ var lastPos = 0;
 span.addEventListener("mousedown", function (e) {
   e.stopPropagation();
   if (e.which === 1) {
+    // timeDisplay.style.display = "none";
     isDragging = true;
     document.addEventListener("mousemove", handleDrag);
     audio.removeEventListener("timeupdate", updateTime);
     mousePos = e.clientX;
   }
+});
+
+span.addEventListener("mousemove", function (e) {
+  e.stopPropagation();
 });
 
 document.addEventListener("mouseup", function (e) {
@@ -106,3 +113,26 @@ var updateTime = function () {
 };
 //Khi nhạc đang phát
 // audio.addEventListener("timeupdate", updateTime);
+
+progressBar.addEventListener("mousemove", function (e) {
+  if (!isDragging) {
+    var offsetX = e.offsetX;
+    var progressBarWidth = this.clientWidth;
+    var rate = (offsetX * 100) / progressBarWidth;
+    var time = (audio.duration * rate) / 100;
+    var mins = Math.floor(time / 60);
+    var seconds = Math.floor(time - mins * 60);
+    var formattedTime = `${mins < 10 ? "0" + mins : mins}:${
+      seconds < 10 ? "0" + seconds : seconds
+    }`;
+    if (timeDisplay) {
+      timeDisplay.style.display = "inline-block";
+      timeDisplay.style.left = `${rate}%`;
+      timeDisplay.innerText = formattedTime;
+    }
+  }
+});
+
+progressBar.addEventListener("mouseleave", function (e) {
+  timeDisplay.style.display = "none";
+});

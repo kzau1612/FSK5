@@ -56,3 +56,12 @@
 .player-timer span {
   user-select: none;
 }
+
+.time-display {
+  display: none;
+  position: absolute;
+  top: -20px;
+  color: white;
+  background: black;
+  translate: -50%;
+}
