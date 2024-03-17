@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <span>DANH SÁCH SẢN PHẨM</span>
+      <table border="1" id="product-table">
+        <thead>
+          <tr>
+            <th width="5%">STT</th>
+            <th>Tên sản phẩm</th>
+            <th width="10%">Giá</th>
+            <th width="10%">Thêm vào giỏ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Sản phẩm 1</td>
+            <td>1000</td>
+            <td>
+              <input type="number" value="1" id="quantity_1" />
+              <button class="btn" id="add_1" class="btn">Thêm vào giỏ</button>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Sản phẩm 2</td>
+            <td>2000</td>
+            <td>
+              <input type="number" value="1" id="quantity_2" />
+              <button class="btn" id="add_2" class="btn">Thêm vào giỏ</button>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Sản phẩm 3</td>
+            <td>3000</td>
+            <td>
+              <input type="number" value="1" id="quantity_3" />
+              <button class="btn" id="add_3" class="btn">Thêm vào giỏ</button>
+            </td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Sản phẩm 4</td>
+            <td>4000</td>
+            <td>
+              <input type="number" value="1" id="quantity_4" />
+              <button class="btn" id="add_4" class="btn">Thêm vào giỏ</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <span>GIỎ HÀNG</span>
+      <table border="1" id="cart-table">
+        <thead>
+          <tr>
+            <th width="5%">STT</th>
+            <th>Tên sản phẩm</th>
+            <th width="20%">Giá</th>
+            <th width="20%">Số lượng</th>
+            <th width="20%">Thành tiền</th>
+            <th width="5^">Xóa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="total">
+            <td colspan="3">Tổng</td>
+            <td></td>
+            <td colspan="2"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="cart-actions">
+        <button class="update-cart">Cập nhật giỏ hàng</button>
+        <button class="delete-cart">Xóa giỏ hàng</button>
+      </div>
+    </div>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
