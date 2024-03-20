@@ -65,3 +65,40 @@
   background: black;
   translate: -50%;
 }
+
+.open-karaoke {
+  background: #892be2;
+  color: white;
+  display: inline-block;
+  padding: 5px 10px;
+  margin-left: 50%;
+  translate: -50%;
+  border: none;
+  cursor: pointer;
+}
+
+.karaoke {
+  position: fixed;
+  inset: 0;
+  color: white;
+  background: #892be2;
+  translate: 0 100%;
+  /* transform: translateY(100%); */
+  transition: 0.3s linear;
+}
+
+.karaoke-inner {
+  max-width: 60%;
+  margin: 0 auto;
+}
+
+.karaoke-header {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.karaoke-header span {
+  cursor: pointer;
+}
