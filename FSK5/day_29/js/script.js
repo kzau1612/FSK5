@@ -3430,6 +3430,13 @@ var displayLyrics = function () {
       topLyric.innerText = lyricText;
       bottomLyric.innerText = lyricText2;
     }
+    if (
+      currentTime - nextLyric.words[nextLyric.words.length - 1].endTime / 1000 >
+      2
+    ) {
+      topLyric.innerText = lyrics.title;
+      bottomLyric.innerText = lyrics.author;
+    }
   }
 };
 
