@@ -38,12 +38,17 @@ span.addEventListener("mousemove", function (e) {
   timeDisplay.style.display = "none";
 });
 
+// span.addEventListener("mouseup", function (e) {
+//   e.stopPropagation();
+// });
+
 document.addEventListener("mouseup", function (e) {
   if (isDragging) {
     audio.currentTime = (audio.duration * rate) / 100;
     lastPos = space;
     isDragging = false;
   }
+
   audio.addEventListener("timeupdate", updateTime);
   if (lastPos < 0) {
     lastPos = 0;
