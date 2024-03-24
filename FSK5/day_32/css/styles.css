@@ -11,6 +11,7 @@
 }
 
 .item {
+  position: relative;
   background: #8bb3f4;
   padding: 10px;
   border: 1px solid white;

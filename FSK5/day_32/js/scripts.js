@@ -3,21 +3,15 @@ var items = document.querySelectorAll(".item");
 var dragElement;
 var dragChild;
 
-items.forEach(function (item) {
-  item.addEventListener("dragover", function (e) {
+list.addEventListener("mousedown", function (e) {
+  if (e.target.className === "list") {
     e.preventDefault();
-  });
-  item.addEventListener("drop", function (e) {
-    e.preventDefault();
-    var target = e.currentTarget;
-  });
+  }
 });
 
 var addEvent = function (e) {
   e.addEventListener("dragstart", onStart);
-  e.addEventListener("dragover", function (e) {
-    e.preventDefault();
-  });
+  e.addEventListener("dragover", onDrag);
   e.addEventListener("drop", onDrop);
 };
 
@@ -27,28 +21,38 @@ var onStart = function (e) {
   dragChild = e.currentTarget.children[0];
 };
 
-var onDrop = function (e) {
-  var targetElement = e.currentTarget;
-  var targetChild = e.currentTarget.children[0];
-  var dragElementClone = dragElement.cloneNode(true);
-  var targetElementClone = targetElement.cloneNode(true);
+var onDrag = function (e) {
+  e.preventDefault();
+  targetElement = e.currentTarget;
+  var targetRect = targetElement.getBoundingClientRect();
 
-  targetElement.replaceWith(dragElementClone);
-  dragElement.replaceWith(targetElementClone);
+  var clientY = e.clientY;
+  var targetTop = targetRect.top;
+  var relativeY = clientY - targetTop;
 
-  dragElementClone.classList.remove("ghost");
-
-  if (
-    targetChild.innerText.includes("Bài") &&
-    dragChild.innerText.includes("Bài")
-  ) {
-    dragElementClone.children[0].replaceWith(targetChild);
-    targetElementClone.children[0].replaceWith(dragChild);
-    console.log(dragElementClone);
+  if (relativeY < targetRect.height / 2) {
+    list.insertBefore(dragElement, targetElement);
+  } else {
+    list.insertBefore(dragElement, targetElement.nextSibling);
   }
+};
 
-  addEvent(targetElementClone);
-  addEvent(dragElementClone);
+var onDrop = function (e) {
+  dragElement.classList.remove("ghost");
+
+  items = document.querySelectorAll(".item");
+
+  var count = 1;
+  var count2 = 1;
+  items.forEach(function (item) {
+    if (item.children[0].innerText.includes("Bài")) {
+      item.children[0].innerText = "Bài " + count + ":";
+      count++;
+    } else {
+      item.children[0].innerText = "Module " + count2 + ":";
+      count2++;
+    }
+  });
 };
 
 items.forEach(function (item) {
