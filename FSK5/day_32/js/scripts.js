@@ -9,6 +9,10 @@ list.addEventListener("mousedown", function (e) {
   }
 });
 
+list.addEventListener("dragend", function (e) {
+  dragElement.classList.remove("ghost");
+});
+
 var addEvent = function (e) {
   e.addEventListener("dragstart", onStart);
   e.addEventListener("dragover", onDrag);
@@ -39,7 +43,6 @@ var onDrag = function (e) {
 
 var onDrop = function (e) {
   dragElement.classList.remove("ghost");
-
   items = document.querySelectorAll(".item");
 
   var count = 1;
