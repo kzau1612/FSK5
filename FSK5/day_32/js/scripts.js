@@ -16,7 +16,7 @@ list.addEventListener("dragend", function (e) {
 var addEvent = function (e) {
   e.addEventListener("dragstart", onStart);
   e.addEventListener("dragover", onDrag);
-  e.addEventListener("drop", onDrop);
+  e.addEventListener("dragend", onDrop);
 };
 
 var onStart = function (e) {
