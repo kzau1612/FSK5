@@ -76,3 +76,42 @@ h2 {
   padding: 0 5px;
   font-weight: bold;
 }
+
+.editor {
+  display: flex;
+  justify-content: space-between;
+}
+
+.editor-action {
+  display: flex;
+  column-gap: 10px;
+}
+
+.editor-btn {
+  display: inline-block;
+  background: black;
+  color: white;
+  width: 50px;
+  padding: 10px;
+  height: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.editor-btn:hover {
+  opacity: 0.7;
+}
+
+#content {
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  margin: 30px 0;
+  min-height: 300px;
+  outline: none;
+  padding: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: end;
+  column-gap: 50px;
+}
