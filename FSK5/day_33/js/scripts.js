@@ -35,3 +35,18 @@ var underlineBtn = document.querySelector("#underline-btn");
 underlineBtn.addEventListener("click", function () {
   document.execCommand("underline");
 });
+
+var colorBtn = document.querySelector("#color-btn");
+colorBtn.addEventListener("click", function () {
+  var color = document.querySelector("#color").value;
+  document.execCommand("foreColor", false, color);
+});
+
+var row = document.querySelector(".row");
+var letterNum = row.children[0];
+var wordNum = row.children[1];
+content.addEventListener("input", function () {
+  var text = content.innerText.trim();
+  letterNum.innerText = "Số kí tự: " + text.length;
+  wordNum.innerText = "Số từ: " + text.split(" ").length;
+});
