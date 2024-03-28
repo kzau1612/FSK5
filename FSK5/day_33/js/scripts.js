@@ -37,8 +37,9 @@ underlineBtn.addEventListener("click", function () {
 });
 
 var colorBtn = document.querySelector("#color-btn");
-colorBtn.addEventListener("click", function () {
-  var color = document.querySelector("#color").value;
+colorBtn.addEventListener("change", function () {
+  var color = colorBtn.value;
+  console.log(color);
   document.execCommand("foreColor", false, color);
 });
 
