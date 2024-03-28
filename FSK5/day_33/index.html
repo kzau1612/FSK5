@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Doc Editor</h2>
+      <div class="editor">
+        <div class="file-row">
+          <button class="file-select">
+            File <span><i class="fa-solid fa-caret-down"></i></span>
+          </button>
+          <input type="text" class="file-name" />
+          <ul class="file-list hidden">
+            <li class="file-option" id="new-option">New</li>
+            <li class="file-option" id="txt-option">Save as TXT</li>
+            <li class="file-option" id="pdf-option">Save as PDF</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src="./js/scripts.js"></script>
+  </body>
+</html>
