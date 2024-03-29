@@ -68,6 +68,7 @@ input.addEventListener("input", function () {
 
 newBtn.addEventListener("click", function () {
   content.innerText = "";
+  input.value = "Untitle";
   fileList.classList.toggle("hidden");
 });
 
