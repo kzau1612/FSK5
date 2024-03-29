@@ -56,6 +56,7 @@ h2 {
   position: absolute;
   top: 40px;
   left: 0;
+  background: white;
 }
 
 .file-option {
@@ -65,6 +66,11 @@ h2 {
 
 .file-option:hover {
   background: #f8f9fa;
+}
+
+.file-option:active {
+  background: #0b5ed7;
+  color: white;
 }
 
 .hidden {
