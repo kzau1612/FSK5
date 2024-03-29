@@ -55,8 +55,9 @@ var wordNum = row.children[1];
 
 content.addEventListener("input", function () {
   var text = content.innerText.trim();
+  var textConvertedSpace = text.replace(/\s+/g, " ");
   letterNum.innerText = "Số kí tự: " + text.length;
-  wordNum.innerText = "Số từ: " + text.split(" ").length;
+  wordNum.innerText = "Số từ: " + textConvertedSpace.split(" ").length;
   contentText = content.innerText;
   contentHtml = content.innerHTML;
 });
