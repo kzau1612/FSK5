@@ -45,7 +45,6 @@ underlineBtn.addEventListener("click", function () {
 var colorBtn = document.querySelector("#color-btn");
 colorBtn.addEventListener("change", function () {
   var color = colorBtn.value;
-  console.log(color);
   document.execCommand("foreColor", false, color);
 });
 
