@@ -69,6 +69,8 @@ input.addEventListener("input", function () {
 newBtn.addEventListener("click", function () {
   content.innerText = "";
   input.value = "Untitle";
+  letterNum.innerText = "Số kí tự: 0";
+  wordNum.innerText = "Số từ: 0";
   fileList.classList.toggle("hidden");
 });
 
