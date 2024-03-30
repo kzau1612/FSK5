@@ -88,6 +88,7 @@ pdfBtn.addEventListener("click", function () {
   fileList.classList.toggle("hidden");
   var option = {
     filename: `${fileName}.pdf`,
+    margin: [5, 5, 5, 5],
   };
   html2pdf(contentHtml, option);
 });
