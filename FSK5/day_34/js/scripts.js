@@ -21,5 +21,11 @@ function updateSeconds() {
 updateSeconds();
 
 btn.addEventListener("click", () => {
-  window.location.href = "https://fullstack.edu.vn/";
+  btn.addEventListener("click", (event) => {
+    if (counter.innerText != 0) {
+      return;
+    } else {
+      window.open("https://fullstack.edu.vn/", "_blank");
+    }
+  });
 });
