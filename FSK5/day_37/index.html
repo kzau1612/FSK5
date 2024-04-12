@@ -9,18 +9,69 @@
   </head>
   <body>
     <div class="container">
-      <h1>
-        <span>Smartyx</span>
-        Todos App
-      </h1>
+      <div class="wrapper">
+        <h1>
+          <span>Smartyx</span>
+          Todos App
+        </h1>
 
-      <div class="form-row">
-        <div class="form-input">
-          <input type="text" id="todo" placeholder="Search Todos" />
-          <span><i class="fa-solid fa-magnifying-glass"></i></span>
+        <div class="form-row">
+          <div class="form-input">
+            <input type="text" id="todo" placeholder="Search Todos" />
+            <span><i class="fa-solid fa-magnifying-glass"></i></span>
+          </div>
+          <button class="add-todo">Add Todo</button>
         </div>
-        <button id="add-todo">Add Todo</button>
+
+        <div class="todo-list">
+          <div class="todo-item">
+            <span class="todo-name">oksdasdsadas</span>
+            <div class="todo-actions">
+              <button class="delete-btn"><i class="fa-solid fa-trash-can"></i></button>
+              <button class="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+              <button class="check-btn"><i class="fa-solid fa-check-to-slot"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <button class="toggle close">
+          Completed Todos <span>1</span> <span><i class="fa-regular fa-circle-down"></i></span>
+        </button>
+
+        <div class="completed-todo-list hidden">
+          <div class="todo-item">
+            <span class="todo-name">oksdasdsadas</span>
+            <div class="todo-actions">
+              <button class="delete-btn"><i class="fa-solid fa-trash-can"></i></button>
+              <button class="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+              <button class="check-btn"><i class="fa-solid fa-check-to-slot"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="add-form hidden">
+          <form class="add-form-inner form">
+            <input type="text" name="name" />
+            <div class="add-form-actions">
+              <button class="save">Save</button>
+              <button class="cancel">Cancel</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="edit-form hidden">
+          <form class="edit-form-inner form">
+            <input type="text" name="name" />
+            <div class="edit-form-actions">
+              <button class="save">Save</button>
+              <button class="cancel">Cancel</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="bg hidden"></div>
       </div>
     </div>
+    <script src="./js/scripts.js"></script>
   </body>
 </html>
