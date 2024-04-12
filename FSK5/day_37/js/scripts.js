@@ -8,6 +8,8 @@ const completedTodoList = document.querySelector(".completed-todo-list");
 const inputAdd = document.querySelector(".add-form-inner input");
 const editForm = document.querySelector(".edit-form");
 const cancelBtn2 = document.querySelector(".edit-form .cancel");
+const searchInput = document.querySelector(".search-input");
+let completedCount = 0;
 let id;
 let todoName;
 
@@ -105,7 +107,6 @@ const render = (users) => {
 const showTask = async () => {
   const response = await fetch(apiUrl);
   const tasks = await response.json();
-  console.log(tasks);
   render(tasks);
 };
 
@@ -197,3 +198,21 @@ const toggleEditForm = (e) => {
   editForm.classList.toggle("hidden");
   bg.classList.toggle("hidden");
 };
+
+searchInput.addEventListener("input", (e) => {
+  const searchString = e.target.value.toLowerCase();
+  const items = document.querySelectorAll(".todo-item");
+  const count = toggleBtn.children[0];
+
+  items.forEach((item) => {
+    const itemText = item.children[0].innerText.toLowerCase().trim();
+    if (itemText.includes(searchString)) {
+      item.style.display = "";
+    } else {
+      item.style.display = "none";
+    }
+  });
+
+  const completedTask = document.querySelectorAll(".completed-todo-list .todo-item:not([style='display: none;'])");
+  count.innerText = completedTask.length;
+});
