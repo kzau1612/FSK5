@@ -40,7 +40,7 @@ cancelBtn.addEventListener("click", (e) => {
   e.preventDefault();
 });
 
-const apiUrl = "https://f9sz9r-8080.csb.app/tasks";
+const apiUrl = "http://localhost:3000/tasks";
 
 const render = (users) => {
   const completedTasks = users.filter((task) => task.status);
