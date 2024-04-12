@@ -200,14 +200,19 @@ const toggleEditForm = (e) => {
 };
 
 searchInput.addEventListener("input", (e) => {
-  const searchString = e.target.value.toLowerCase();
+  const searchString = e.target.value;
   const items = document.querySelectorAll(".todo-item");
   const count = toggleBtn.children[0];
 
   items.forEach((item) => {
-    const itemText = item.children[0].innerText.toLowerCase().trim();
+    const itemText = item.children[0].innerText.trim();
+    const itemTextElement = item.children[0];
     if (itemText.includes(searchString)) {
       item.style.display = "";
+      const index = itemText.indexOf(searchString);
+      const highlightedText = `<span class="highlight">${itemText.substr(index, searchString.length)}</span>`;
+      const remainingText = itemText.substr(index + searchString.length);
+      itemTextElement.innerHTML = itemText.substr(0, index) + highlightedText + remainingText;
     } else {
       item.style.display = "none";
     }
