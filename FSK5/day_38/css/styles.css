@@ -1,0 +1,28 @@
+.container {
+  font-family: sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+.post-list {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.post-item {
+  padding: 20px;
+}
+
+.post-item + .post-item {
+  border-top: 2px solid black;
+}
+
+.post-item h3 {
+  font-size: 30px;
+}
+
+.post-item p {
+  font-size: 20px;
+}
