@@ -20,8 +20,8 @@ cancelBtn2.addEventListener("click", (e) => {
 });
 
 toggleBtn.addEventListener("click", () => {
-  toggleBtn.classList.remove("close");
-  completedTodoList.classList.remove("hidden");
+  toggleBtn.classList.toggle("close");
+  completedTodoList.classList.toggle("hidden");
 });
 
 addBtn.addEventListener("click", () => {
@@ -41,6 +41,7 @@ cancelBtn.addEventListener("click", (e) => {
   e.preventDefault();
 });
 
+// const apiUrl = "http://localhost:3000/tasks";
 const apiUrl = "https://9c325w-8080.csb.app/tasks";
 
 const render = (users) => {
