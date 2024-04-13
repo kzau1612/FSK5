@@ -15,28 +15,29 @@ let todoName;
 
 cancelBtn2.addEventListener("click", (e) => {
   e.preventDefault();
-  editForm.classList.toggle("hidden");
-  bg.classList.toggle("hidden");
+  editForm.classList.add("hidden");
+  bg.classList.add("hidden");
 });
 
 toggleBtn.addEventListener("click", () => {
-  toggleBtn.classList.toggle("close");
-  completedTodoList.classList.toggle("hidden");
+  toggleBtn.classList.remove("close");
+  completedTodoList.classList.remove("hidden");
 });
 
 addBtn.addEventListener("click", () => {
-  addForm.classList.toggle("hidden");
-  bg.classList.toggle("hidden");
+  addForm.classList.remove("hidden");
+  bg.classList.remove("hidden");
 });
 
 bg.addEventListener("click", () => {
-  addForm.classList.toggle("hidden");
-  bg.classList.toggle("hidden");
+  addForm.classList.add("hidden");
+  bg.classList.add("hidden");
+  editForm.classList.add("hidden");
 });
 
 cancelBtn.addEventListener("click", (e) => {
-  addForm.classList.toggle("hidden");
-  bg.classList.toggle("hidden");
+  addForm.classList.add("hidden");
+  bg.classList.add("hidden");
   e.preventDefault();
 });
 
