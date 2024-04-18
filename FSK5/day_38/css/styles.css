@@ -1,5 +1,12 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 .container {
   font-family: sans-serif;
+  padding: 50px;
 }
 
 h1 {
@@ -7,7 +14,7 @@ h1 {
 }
 
 .post-list {
-  margin: 0 auto;
+  margin: 50px auto 0;
   width: 80%;
 }
 
@@ -25,4 +32,5 @@ h1 {
 
 .post-item p {
   font-size: 20px;
+  margin-top: 20px;
 }
