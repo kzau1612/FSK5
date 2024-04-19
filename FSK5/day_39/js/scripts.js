@@ -84,8 +84,66 @@ const render = async () => {
     let timer = root.querySelector(".timer-bar");
     if (width <= 0) {
       clearInterval(countdownTime);
-      questionNum++;
-      render();
+      streak = 0;
+      bonus = 0;
+      if (questionNum === data.length) {
+        root.innerHTML = `
+            <div class="result">
+            <span>Result</span>
+            <div><span>Accuracy:</span><span class="accuracy">${((correct / data.length) * 100).toFixed(
+              1
+            )}%</span></div>
+            <div class="row">
+              <span>
+                <span class="result-score">${score}</span>
+                <span>Score</span>
+              </span>
+              <span>
+                <span class="result-streak">${streak}</span>
+                <span>Streak</span>
+              </span>
+            </div>
+            <div class="row">
+              <span>
+                <span class="result-correct">${correct}</span>
+                <span>Correct</span>
+              </span>
+              <span>
+                <span class="result-incorrect">${incorrect}</span>
+                <span>Incorrrect</span>
+              </span>
+            </div>
+            <button class="restart-btn">Play again</button>
+          </div>
+            `;
+        const restartBtn = document.querySelector(".restart-btn");
+        restartBtn.addEventListener("click", () => {
+          root.innerHTML = `<button class="start-btn">start</button>`;
+          countdownNum = 3;
+
+          questionNum = 1;
+          correct = 0;
+          incorrect = 0;
+          streak = 0;
+          score = 0;
+          bonus = 0;
+          startBtn = root.querySelector(".start-btn");
+          startBtn.addEventListener("click", () => {
+            const countdown = setInterval(() => {
+              if (countdownNum < 1) {
+                clearInterval(countdown);
+                render();
+              } else {
+                root.innerHTML = `<p class="count-down">${countdownNum}</p>`;
+                +countdownNum--;
+              }
+            }, 1000);
+          });
+        });
+      } else {
+        questionNum++;
+        render();
+      }
     } else {
       width -= 1;
       timer.style.width = width + "%";
