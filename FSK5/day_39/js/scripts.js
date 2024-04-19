@@ -9,6 +9,8 @@ let question = document.querySelector(".question");
 let countdownNum = 3;
 let timer = 10;
 let questionNum = 1;
+let correct = 0;
+let incorrect = 0;
 
 const apiUrl = "http://localhost:3000/questions";
 
@@ -94,15 +96,12 @@ const render = async () => {
           otherAnswer.classList.add("hidden");
         }
       });
-      let chosenAnswer = root.querySelector(".chosen");
-      if (chosenAnswer) {
-        chosenAnswer.classList.remove("chosen");
-      }
       answer.classList.add("chosen");
       if (answer.dataset.id == data[questionNum - 1].answer) {
         answer.classList.add("correct-answer");
         let correctNotification = root.querySelector(".correct");
         correctNotification.classList.remove("hidden");
+        correct++;
       } else {
         answer.classList.add("incorrect-answer");
         let correctAnswer = document.querySelector(`[data-id='${data[questionNum - 1].answer}']`);
@@ -111,13 +110,45 @@ const render = async () => {
         if (correctAnswer) {
           correctAnswer.classList.add("correct-answer");
         }
+        incorrect++;
       }
       chosen = true;
       clearInterval(countdownTime);
 
       setTimeout(() => {
-        questionNum++;
-        render();
+        if (questionNum === data.length) {
+          root.innerHTML = `
+            <div class="result">
+            <span>Result</span>
+            <div><span>Accuracy:</span><span class="accuracy">${((correct / data.length) * 100).toFixed(
+              1
+            )}%</span></div>
+            <div class="row">
+              <span>
+                <span class="result-score">0</span>
+                <span>Score</span>
+              </span>
+              <span>
+                <span class="result-streak">0</span>
+                <span>Streak</span>
+              </span>
+            </div>
+            <div class="row">
+              <span>
+                <span class="result-correct">${correct}</span>
+                <span>Correct</span>
+              </span>
+              <span>
+                <span class="result-incorrect">${incorrect}</span>
+                <span>Incorrrect</span>
+              </span>
+            </div>
+          </div>
+            `;
+        } else {
+          questionNum++;
+          render();
+        }
       }, 2000);
     });
   });
