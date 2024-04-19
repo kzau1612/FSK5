@@ -2,15 +2,16 @@ const root = document.querySelector("#root");
 const startBtn = document.querySelector(".start-btn");
 // let questionNum = document.querySelector(".question-num");
 let totalQuestion = document.querySelector(".total-question");
-let streak = document.querySelector(".streak");
-let bonus = document.querySelector(".bonus");
-let score = document.querySelector(".score");
+let scoreEl = document.querySelector(".score");
 let question = document.querySelector(".question");
 let countdownNum = 3;
 let timer = 10;
 let questionNum = 1;
 let correct = 0;
 let incorrect = 0;
+let streak = 0;
+let score = 0;
+let bonus = 0;
 
 const apiUrl = "http://localhost:3000/questions";
 
@@ -39,7 +40,7 @@ const render = async () => {
       <div class="streak-line-2"></div>
       <div class="streak-progress"></div>
     </div>
-    <span class="bonus">+100</span>
+    <span class="bonus"></span>
   </div>
   <div class="top-right">
     <span>Score:<span class="score">0</span></span>
@@ -71,6 +72,13 @@ const render = async () => {
 </div>
 </div>`;
   let width = 100;
+  let streakProgress = root.querySelector(".streak-progress");
+  streakProgress.style.width = `${(streak / 3) * 100}%`;
+  let bonusEl = document.querySelector(".bonus");
+  bonusEl.innerText = "+" + bonus;
+  let scoreEl = document.querySelector(".score");
+  scoreEl.innerText = score;
+
   const countdownTime = setInterval(() => {
     let timer = root.querySelector(".timer-bar");
     if (width <= 0) {
@@ -102,7 +110,24 @@ const render = async () => {
         let correctNotification = root.querySelector(".correct");
         correctNotification.classList.remove("hidden");
         correct++;
+        streak++;
+
+        score += 500 + bonus;
+        scoreEl.innerText = score;
+        bonus += 100;
+        if (bonus >= 300) {
+          bonus = 300;
+        }
+        streakProgress = root.querySelector(".streak-progress");
+        streakProgress.style.width = `${(streak / 3) * 100}%`;
+        bonusEl.innerText = "+" + bonus;
       } else {
+        streak = 0;
+        bonus = 0;
+        streakProgress = root.querySelector(".streak-progress");
+        streakProgress.style.width = `${(streak / 3) * 100}%`;
+
+        bonusEl.innerText = "+" + bonus;
         answer.classList.add("incorrect-answer");
         let correctAnswer = document.querySelector(`[data-id='${data[questionNum - 1].answer}']`);
         let incorrectNotification = root.querySelector(".incorrect");
@@ -125,11 +150,11 @@ const render = async () => {
             )}%</span></div>
             <div class="row">
               <span>
-                <span class="result-score">0</span>
+                <span class="result-score">${score}</span>
                 <span>Score</span>
               </span>
               <span>
-                <span class="result-streak">0</span>
+                <span class="result-streak">${streak}</span>
                 <span>Streak</span>
               </span>
             </div>
