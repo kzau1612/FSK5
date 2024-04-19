@@ -32,7 +32,8 @@
   background: rgb(0, 0, 0, 0.6);
 }
 
-.start-btn:hover {
+.start-btn:hover,
+.restart-btn:hover {
   background: orange;
 }
 
@@ -216,4 +217,15 @@
   color: white;
   font-size: 50px;
   font-weight: 600;
+}
+
+.restart-btn {
+  background: green;
+  color: white;
+  font-size: 20px;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
 }

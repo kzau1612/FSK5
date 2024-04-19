@@ -1,5 +1,4 @@
 const root = document.querySelector("#root");
-const startBtn = document.querySelector(".start-btn");
 // let questionNum = document.querySelector(".question-num");
 let totalQuestion = document.querySelector(".total-question");
 let scoreEl = document.querySelector(".score");
@@ -13,8 +12,10 @@ let streak = 0;
 let score = 0;
 let bonus = 0;
 
-const apiUrl = "http://localhost:3000/questions";
+// const apiUrl = "http://localhost:3000/questions";
+const apiUrl = "https://gwfgsg-8080.csb.app/questions";
 
+let startBtn = document.querySelector(".start-btn");
 startBtn.addEventListener("click", () => {
   const countdown = setInterval(() => {
     if (countdownNum < 1) {
@@ -86,7 +87,6 @@ const render = async () => {
       questionNum++;
       render();
     } else {
-      console.log(width);
       width -= 1;
       timer.style.width = width + "%";
     }
@@ -168,8 +168,33 @@ const render = async () => {
                 <span>Incorrrect</span>
               </span>
             </div>
+            <button class="restart-btn">Play again</button>
           </div>
             `;
+          const restartBtn = document.querySelector(".restart-btn");
+          restartBtn.addEventListener("click", () => {
+            root.innerHTML = `<button class="start-btn">start</button>`;
+            countdownNum = 3;
+
+            questionNum = 1;
+            correct = 0;
+            incorrect = 0;
+            streak = 0;
+            score = 0;
+            bonus = 0;
+            startBtn = root.querySelector(".start-btn");
+            startBtn.addEventListener("click", () => {
+              const countdown = setInterval(() => {
+                if (countdownNum < 1) {
+                  clearInterval(countdown);
+                  render();
+                } else {
+                  root.innerHTML = `<p class="count-down">${countdownNum}</p>`;
+                  +countdownNum--;
+                }
+              }, 1000);
+            });
+          });
         } else {
           questionNum++;
           render();
