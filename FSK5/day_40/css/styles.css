@@ -34,3 +34,63 @@ h1 {
   font-size: 20px;
   margin-top: 20px;
 }
+
+.hidden {
+  display: none !important;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.form label span {
+  display: inline-block;
+  width: 80px;
+}
+
+.form input,
+.form textarea {
+  margin-top: 10px;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 20px;
+}
+
+.sign-in-btn,
+.to-sign-in,
+.sign-up-btn,
+.sign-out-btn {
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+  border: 1px solid transparent;
+  background: green;
+  color: white;
+  font-size: 20px;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.sign-in-btn:hover,
+.to-sign-in:hover,
+.sign-up-btn:hover {
+  background: orange;
+}
+
+.form.new-post label:last-child {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.sign-out-btn {
+  background: red;
+}
+
+.sign-out-btn:hover {
+  background: green;
+}

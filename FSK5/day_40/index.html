@@ -7,6 +7,50 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
+    <div class="not-signed-in">
+      <button class="to-sign-in">Sign in</button>
+      <form action="" class="form form-sign-in hidden">
+        <label
+          ><span>Email:</span> <input type="text" name="email" class="email" placeholder="Enter your email..."
+        /></label>
+        <label
+          ><span>Password:</span>
+          <input type="password" name="password" class="password" placeholder="Enter your password..."
+        /></label>
+        <div>
+          <button class="sign-in-btn">Sign in</button>
+          <button class="sign-up-btn">Sign up</button>
+        </div>
+      </form>
+      <form action="" class="form form-sign-up hidden">
+        <label
+          ><span>Name:</span> <input type="text" name="text" class="name" placeholder="Enter your name..."
+        /></label>
+        <label
+          ><span>Email:</span> <input type="text" name="email" class="email" placeholder="Enter your email..."
+        /></label>
+        <label
+          ><span>Password:</span>
+          <input type="password" name="password" class="password" placeholder="Enter your password..."
+        /></label>
+        <div>
+          <button class="sign-up-btn">Sign up</button>
+          <button class="sign-in-btn">Sign in</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="signed-in hidden">
+      <h2 class="profile-name">Hello abc</h2>
+      <form action="" class="form new-post">
+        <label><span>Title: </span><input type="text" name="title" class="title" placeholder="Enter title..." /></label>
+        <label
+          ><span>Content: </span
+          ><textarea cols="40" rows="10" name="content" class="content" placeholder="Enter content..."></textarea>
+        </label>
+      </form>
+      <button class="sign-out-btn">Sign Out</button>
+    </div>
     <div class="container">
       <h1>Post</h1>
       <div class="post-list">
@@ -16,6 +60,6 @@
         </div> -->
       </div>
     </div>
-    <script src="./js/scripts.js"></script>
+    <script type="module" src="./js/scripts.js"></script>
   </body>
 </html>
