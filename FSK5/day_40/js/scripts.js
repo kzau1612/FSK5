@@ -192,9 +192,8 @@ window.onload = function () {
 
   const signUp = async (data) => {
     const response = await httpClient.post("/auth/register", data);
-    console.log(response);
     if (!response.res.ok) {
-      alert("Something went wrong");
+      alert(response.data.message);
       return;
     }
     alert("Register successfully");
@@ -215,7 +214,7 @@ window.onload = function () {
           console.log(sendRequestProfile());
         }
       } catch (e) {
-        console.log(e.message);
+        console.log(e);
       }
     }
 

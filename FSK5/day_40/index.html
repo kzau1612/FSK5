@@ -24,14 +24,20 @@
       </form>
       <form action="" class="form form-sign-up hidden">
         <label
-          ><span>Name:</span> <input type="text" name="name" class="name" placeholder="Enter your name..."
+          ><span>Name:</span> <input type="text" name="name" class="name" placeholder="Enter your name..." required
         /></label>
         <label
           ><span>Email:</span> <input type="text" name="email" class="email" placeholder="Enter your email..."
         /></label>
         <label
           ><span>Password:</span>
-          <input type="password" name="password" class="password" placeholder="Enter your password..."
+          <input
+            type="password"
+            name="password"
+            class="password"
+            placeholder="Enter your password..."
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
         /></label>
 
         <div>
