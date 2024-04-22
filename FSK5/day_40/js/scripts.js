@@ -10,9 +10,8 @@ window.onload = function () {
   const container = document.querySelector(".container");
 
   const showPost = async () => {
-    const response = await fetch(apiUrl + `/blogs?page=${page}`);
-    const data = await response.json();
-    data.data.forEach((post) => {
+    const response = await httpClient.get(`/blogs?page=${page}`);
+    response.data.data.forEach((post) => {
       const postItem = document.createElement("div");
       postItem.classList.add("post-item");
       postItem.innerHTML = `
@@ -82,9 +81,7 @@ window.onload = function () {
   });
 
   signUpBtn2.addEventListener("click", (e) => {
-    e.preventDefault();
-    formSignIn.classList.remove("hidden");
-    formSignUp.classList.add("hidden");
+    // e.preventDefault();
   });
 
   formSignIn.addEventListener("submit", (e) => {
@@ -166,6 +163,46 @@ window.onload = function () {
     }
   };
 
+  const newPostForm = document.querySelector(".new-post");
+  newPostForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const formData = Object.fromEntries([...new FormData(e.target)]);
+    addNewPost(formData);
+  });
+
+  const addNewPost = async (data) => {
+    const response = await httpClient.post("/blogs", data);
+    if (!response.res.ok) {
+      alert("Something went wrong");
+      return;
+    }
+    alert("Add new post successfully");
+    newPostForm.reset();
+    page = 1;
+    postList.innerHTML = "";
+    showPost();
+  };
+
+  formSignUp.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const formData = Object.fromEntries([...new FormData(e.target)]);
+    console.log(formData);
+    signUp(formData);
+  });
+
+  const signUp = async (data) => {
+    const response = await httpClient.post("/auth/register", data);
+    console.log(response);
+    if (!response.res.ok) {
+      alert("Something went wrong");
+      return;
+    }
+    alert("Register successfully");
+    formSignIn.classList.remove("hidden");
+    formSignUp.classList.add("hidden");
+    formSignUp.reset();
+  };
+
   const checkLogin = () => {
     let isLogin = false;
     if (localStorage.getItem("tokens")) {
@@ -182,7 +219,6 @@ window.onload = function () {
       }
     }
 
-    console.log(isLogin);
     if (isLogin) {
       unSignedInWrapper.classList.add("hidden");
       signedInWrapper.classList.remove("hidden");
