@@ -58,7 +58,7 @@ window.onload = function () {
   const signOutBtn = document.querySelector(".sign-out-btn");
 
   const dateInput = document.querySelector(".date");
-  dateInput.addEventListener("change", (e) => {
+  dateInput.addEventListener("blur", (e) => {
     const selectedDate = new Date(e.target.value);
     const currentDate = new Date();
     const currentHours = currentDate.getHours();
@@ -70,9 +70,13 @@ window.onload = function () {
     selectedDate.setHours(currentHours);
     selectedDate.setMinutes(currentMinutes);
     selectedDate.setSeconds(currentSeconds);
-    alert(
-      `Bài viết sẽ được đăng vào ${selectedDay}/${selectedMonth}/${selectedYear} ${currentHours} giờ ${currentMinutes} phút ${currentSeconds} giây`
-    );
+    if (selectedDate < currentDate) {
+      alert("Vui lòng chọn lại thời gian");
+    } else {
+      alert(
+        `Bài viết sẽ được đăng vào ${selectedDay}/${selectedMonth}/${selectedYear} ${currentHours} giờ ${currentMinutes} phút ${currentSeconds} giây`
+      );
+    }
   });
 
   signOutBtn.addEventListener("click", () => {
