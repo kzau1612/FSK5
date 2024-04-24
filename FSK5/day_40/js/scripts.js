@@ -58,25 +58,30 @@ window.onload = function () {
   const signOutBtn = document.querySelector(".sign-out-btn");
 
   const dateInput = document.querySelector(".date");
-  dateInput.addEventListener("blur", (e) => {
-    const selectedDate = new Date(e.target.value);
-    const currentDate = new Date();
-    const currentHours = currentDate.getHours();
-    const currentMinutes = currentDate.getMinutes();
-    const currentSeconds = currentDate.getSeconds();
-    const selectedDay = selectedDate.getDate();
-    const selectedMonth = selectedDate.getMonth();
-    const selectedYear = selectedDate.getFullYear();
-    selectedDate.setHours(currentHours);
-    selectedDate.setMinutes(currentMinutes);
-    selectedDate.setSeconds(currentSeconds);
-    if (selectedDate < currentDate) {
-      alert("Vui lòng chọn lại thời gian");
-    } else {
-      alert(
-        `Bài viết sẽ được đăng vào ${selectedDay}/${selectedMonth}/${selectedYear} ${currentHours} giờ ${currentMinutes} phút ${currentSeconds} giây`
-      );
-    }
+  let timeoutId;
+
+  dateInput.addEventListener("change", () => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      const selectedDate = new Date(dateInput.value);
+      const currentDate = new Date();
+      const currentHours = currentDate.getHours();
+      const currentMinutes = currentDate.getMinutes();
+      const currentSeconds = currentDate.getSeconds();
+      const selectedDay = selectedDate.getDate();
+      const selectedMonth = selectedDate.getMonth();
+      const selectedYear = selectedDate.getFullYear();
+      selectedDate.setHours(currentHours);
+      selectedDate.setMinutes(currentMinutes);
+      selectedDate.setSeconds(currentSeconds);
+      if (selectedDate < currentDate) {
+        alert("Vui lòng chọn lại thời gian");
+      } else {
+        alert(
+          `Bài viết sẽ được đăng vào ${selectedDay}/${selectedMonth}/${selectedYear} ${currentHours} giờ ${currentMinutes} phút ${currentSeconds} giây`
+        );
+      }
+    }, 1000);
   });
 
   signOutBtn.addEventListener("click", () => {
