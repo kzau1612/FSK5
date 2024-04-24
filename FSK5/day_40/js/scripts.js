@@ -57,6 +57,24 @@ window.onload = function () {
 
   const signOutBtn = document.querySelector(".sign-out-btn");
 
+  const dateInput = document.querySelector(".date");
+  dateInput.addEventListener("change", (e) => {
+    const selectedDate = new Date(e.target.value);
+    const currentDate = new Date();
+    const currentHours = currentDate.getHours();
+    const currentMinutes = currentDate.getMinutes();
+    const currentSeconds = currentDate.getSeconds();
+    const selectedDay = selectedDate.getDate();
+    const selectedMonth = selectedDate.getMonth();
+    const selectedYear = selectedDate.getFullYear();
+    selectedDate.setHours(currentHours);
+    selectedDate.setMinutes(currentMinutes);
+    selectedDate.setSeconds(currentSeconds);
+    alert(
+      `Bài viết sẽ được đăng vào ${selectedDay}/${selectedMonth}/${selectedYear} ${currentHours} giờ ${currentMinutes} phút ${currentSeconds} giây`
+    );
+  });
+
   signOutBtn.addEventListener("click", () => {
     localStorage.removeItem("tokens");
     unSignedInWrapper.classList.remove("hidden");
@@ -111,7 +129,7 @@ window.onload = function () {
     if (localStorage.getItem("tokens")) {
       try {
         const tokens = JSON.parse(localStorage.getItem("tokens"));
-        // console.log(tokens);
+
         if (tokens.accessToken) {
           isLogin = true;
           unSignedInWrapper.classList.add("hidden");
@@ -130,7 +148,6 @@ window.onload = function () {
     httpClient.token = tokens.accessToken;
 
     const profileRes = await httpClient.get("/users/profile");
-    console.log(profileRes);
 
     if (!profileRes.res.ok) {
       const newToken = await sendRequestRefreshToken(tokens.refreshToken);
@@ -152,8 +169,6 @@ window.onload = function () {
   const sendRequestRefreshToken = async function (refreshToken) {
     try {
       const response = await httpClient.post("/auth/refresh-token", { refreshToken });
-      console.log(response);
-      console.log(refreshToken);
       if (!response.res.ok) {
         throw new Error("Refresh Token Invalid");
       }
@@ -167,6 +182,7 @@ window.onload = function () {
   newPostForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const formData = Object.fromEntries([...new FormData(e.target)]);
+
     addNewPost(formData);
   });
 
@@ -186,7 +202,6 @@ window.onload = function () {
   formSignUp.addEventListener("submit", (e) => {
     e.preventDefault();
     const formData = Object.fromEntries([...new FormData(e.target)]);
-    console.log(formData);
     signUp(formData);
   });
 
@@ -211,7 +226,6 @@ window.onload = function () {
           isLogin = true;
 
           sendRequestProfile();
-          console.log(sendRequestProfile());
         }
       } catch (e) {
         console.log(e);
