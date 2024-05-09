@@ -21,7 +21,7 @@ export const App = () => {
         component: Products,
       },
       {
-        path: "san-pham/:id",
+        path: "/san-pham/:id",
         component: ProductDetail,
       },
     ],

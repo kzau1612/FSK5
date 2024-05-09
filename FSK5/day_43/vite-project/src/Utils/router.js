@@ -3,22 +3,16 @@ const r = new Navigo("/", { linksSelector: "a" });
 const app = document.querySelector("#app");
 
 export const router = (arr, layout = "") => {
-  let path = "";
-  let component = "";
   arr.forEach((e) => {
-    if (e.path) {
-      path = e.path;
+    if (e.path && typeof e.component === "function") {
+      r.on(e.path, () => {
+        app.innerHTML = e.component();
+      });
     }
-    if (e.component) {
-      component = e.component();
-    }
-    r.on(path, () => {
-      app.innerHTML = component;
-    });
   });
-  r.notFound(() => (app.innerHTML = "Sai đường dẫn"));
-  r.resolve();
   if (typeof layout === "function") {
     app.innerHTML = layout();
   }
+  r.notFound(() => (app.innerHTML = "Sai đường dẫn"));
+  r.resolve();
 };
