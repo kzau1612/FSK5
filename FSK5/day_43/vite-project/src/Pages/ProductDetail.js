@@ -1,8 +1,7 @@
-export const ProductDetail = ({ params }) => {
-  const { id } = params;
-
+export const ProductDetail = ({ data }) => {
+  const { id } = data;
   return `
-  <h1>Chi tiết sản phẩm: ${id}</h1>
-  <button onlick="navigate('/san-pham')">Back</button>
+  <h1>Chi tiết sản phẩm ${id}:</h1>
+  <a href="/san-pham">Back</a>
   `;
 };

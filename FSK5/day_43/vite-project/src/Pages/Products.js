@@ -3,13 +3,13 @@ export const Products = () => {
       <h1>Danh sách sản phẩm</h1>
       <ul class="nav">
           <li class="nav-item">
-                  <a href="/" data-route>Trang chủ</a>
+                <a href="/san-pham/1" >Sản phẩm 1</a>
           </li>
           <li class="nav-item">
-              <a href="/gioi-thieu" data-route>Giới Thiệu</a>
+              <a href="/san-pham/2" >Sản phẩm 2</a>
           </li>
            <li class="nav-item">
-              <a href="/san-pham" data-route>Sản phẩm</a>
+              <a href="/san-pham/3" data-route>Sản phẩm 3</a>
           </li>
       </ul>
       `;
