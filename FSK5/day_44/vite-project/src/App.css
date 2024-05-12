@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.container {
+  width: 80%;
+  margin: 50px auto;
+  padding: 16px;
+  background: rgb(51 65 85);
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+button {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background-image: linear-gradient(rgb(0 0 0/40%) 0 0);
+}
+
+.top {
+  width: 600px;
+  position: relative;
+  margin: 50px auto 0 auto;
+  padding: 8px 0;
+  border-bottom: 1px solid green;
+  text-align: center;
+}
+
+.add-input,
+.add-btn {
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+.add-input {
+  background: transparent;
+  width: 100%;
+}
+
+.add-input::placeholder {
+  color: rgb(255, 255, 255, 0.7);
+}
+
+.add-btn {
+  background: rgb(20, 184, 166);
+  border-radius: 0.25rem;
+  position: absolute;
+  top: 8px;
+  right: 0;
+}
+
+.task-list {
+  width: 600px;
+  margin: 50px auto;
+}
+
+.task-item {
+  background: white;
+  padding: 24px 32px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.task-item__input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  font-size: 20px;
+}
+
+.task-item__actions {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.task-item button {
+  padding: 10px;
+  border: none;
+  color: white;
+  border-radius: 0.25rem;
+  font-size: 20px;
+}
+
+.update-btn,
+.edit-btn {
+  background: rgb(20, 184, 166);
+}
+
+.delete-btn {
+  background: rgb(239, 68, 68);
+}
+
+.quit-btn {
+  background: rgb(249, 115, 22);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.row span {
+  font-size: 20px;
+}
+
+.row input {
+  width: 25px;
+  height: 25px;
+}
