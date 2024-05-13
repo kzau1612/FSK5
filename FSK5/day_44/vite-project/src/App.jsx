@@ -4,15 +4,27 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
   const [status, setStatus] = useState(false);
-  const [key, setKey] = useState("");
+
   const [tasks, setTasks] = useState([]);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [taskStatus, setTaskStatus] = useState({});
 
   const apiUrl = "https://api-todo-ebon.vercel.app/api/v1";
 
-  const getApiKey = async (email) => {
+  const getEmail = async () => {
+    if (!localStorage.getItem("userEmail")) {
+      const userEmail = prompt("Please enter your email:");
+      if (userEmail) {
+        localStorage.setItem("userEmail", userEmail);
+        getApiKey();
+      }
+    } else {
+      getApiKey();
+    }
+  };
+
+  const getApiKey = async () => {
+    const email = localStorage.getItem("userEmail");
     const url = apiUrl + "/api-key?email=" + email;
     try {
       const response = await fetch(url);
@@ -23,55 +35,81 @@ function App() {
 
       const data = await response.json();
       const { apiKey } = data.data;
-      setKey(apiKey);
-      return true;
+      if (apiKey) {
+        localStorage.setItem("apiKey", apiKey);
+        getTasks();
+        return true;
+      } else {
+        localStorage.removeItem("userEmail");
+        getEmail();
+        return false;
+      }
     } catch (error) {
       console.error("Fetch error:", error);
+      localStorage.removeItem("userEmail");
+      getEmail();
       return false;
     }
   };
 
   const getTasks = async () => {
     const url = apiUrl + "/todos";
-    try {
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Api-Key": key,
-        },
-      });
+    const key = localStorage.getItem("apiKey");
+    console.log(key);
+    if (key) {
+      try {
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Api-Key": key,
+          },
+        });
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        setTasks(data.data.listTodo);
+      } catch (error) {
+        console.error("Fetch error:", error);
       }
+    }
+  };
 
-      const data = await response.json();
-      setTasks(data.data.listTodo);
-    } catch (error) {
-      console.error("Fetch error:", error);
+  const deleteTask = async (id) => {
+    const confirm = window.confirm("Bạn có chắc muốn xóa task này không?");
+    if (confirm) {
+      const key = localStorage.getItem("apiKey");
+      console.log("id: " + id);
+      console.log("key: " + key);
+      if (key) {
+        const url = apiUrl + "/todos/" + id;
+        try {
+          const response = await fetch(url, {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+              "X-Api-Key": key,
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+
+          getTasks();
+        } catch (error) {
+          console.error("Fetch error:", error);
+        }
+      }
     }
   };
 
   useEffect(() => {
-    const getEmail = async () => {
-      if (!key) {
-        const userEmail = prompt("Please enter your email:");
-        if (userEmail) {
-          setIsSuccess(await getApiKey(userEmail));
-        }
-      }
-    };
     getEmail();
-  }, [isSuccess]);
-
-  useEffect(() => {
-    if (key) {
-      getTasks();
-    }
-  }, [key]);
-
-  console.log(tasks);
+  }, []);
 
   return (
     <>
@@ -84,13 +122,25 @@ function App() {
         {tasks ? (
           <div className="task-list">
             {tasks.map((task, index) => (
-              <div className="task-item" key={index}>
+              <div className="task-item" key={task._id}>
                 <input type="text" className="task-item__input" value={task.todo} data-status={task.isCompleted} />
-                {!status ? (
+                {!taskStatus[task._id] ? (
                   <div className="task-item__actions">
                     <div className="row">
-                      <button className="edit-btn">Sửa</button>
-                      <button className="delete-btn">Xóa</button>
+                      <button
+                        className="edit-btn"
+                        onClick={() => {
+                          setTaskStatus((prevState) => ({
+                            ...prevState,
+                            [task._id]: !prevState[task._id],
+                          }));
+                        }}
+                      >
+                        Sửa
+                      </button>
+                      <button className="delete-btn" onClick={() => deleteTask(task._id)}>
+                        Xóa
+                      </button>
                     </div>
                   </div>
                 ) : (
@@ -100,7 +150,17 @@ function App() {
                       <input type="checkbox" />
                     </div>
                     <div className="row">
-                      <button className="quit-btn">Thoát</button>
+                      <button
+                        className="quit-btn"
+                        onClick={() => {
+                          setTaskStatus((prevState) => ({
+                            ...prevState,
+                            [task._id]: !prevState[task._id],
+                          }));
+                        }}
+                      >
+                        Thoát
+                      </button>
                       <button className="update-btn">Update</button>
                       <button className="delete-btn">Xóa</button>
                     </div>
