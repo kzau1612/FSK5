@@ -7,7 +7,9 @@ function App() {
   const [status, setStatus] = useState(false);
 
   const [tasks, setTasks] = useState([]);
+  const [editedTasks, setEditedTasks] = useState({});
   const [taskStatus, setTaskStatus] = useState({});
+  const [newTask, setNewTask] = useState("");
 
   const apiUrl = "https://api-todo-ebon.vercel.app/api/v1";
 
@@ -107,23 +109,132 @@ function App() {
     }
   };
 
+  const handleTaskEdit = (taskId, newValue) => {
+    setEditedTasks((prevEditedTasks) => ({
+      ...prevEditedTasks,
+      [taskId]: newValue,
+    }));
+  };
+
+  const updateTask = async (id) => {
+    const key = localStorage.getItem("apiKey");
+    const editedTask = editedTasks[id];
+    if (key && editedTask) {
+      const url = apiUrl + "/todos/" + id;
+      try {
+        const response = await fetch(url, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Api-Key": key,
+          },
+          body: JSON.stringify({ todo: editedTask }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        console.log("ok");
+        getTasks(); // Cập nhật danh sách task sau khi cập nhật thành công
+      } catch (error) {
+        console.error("Fetch error:", error);
+      }
+    }
+  };
+
+  const handleAddNewTask = (e) => {
+    e.preventDefault();
+    if (newTask.trim()) {
+      addNewTask(newTask.trim());
+      setNewTask(""); // Xóa giá trị của input sau khi thêm task mới
+    }
+  };
+
+  const handleCheckboxChange = async (index, id) => {
+    const key = localStorage.getItem("apiKey");
+    const isCompleted = tasks[index].isCompleted;
+    console.log(isCompleted);
+    if (key) {
+      const url = `${apiUrl}/todos/${id}`;
+      try {
+        const response = await fetch(url, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Api-Key": key,
+          },
+          body: JSON.stringify({ isCompleted: !isCompleted }), // Đặt isCompleted thành true
+        });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        getTasks(); // Cập nhật danh sách task sau khi cập nhật thành công
+      } catch (error) {
+        console.error("Fetch error:", error);
+      }
+    }
+  };
+
+  const addNewTask = async () => {
+    const key = localStorage.getItem("apiKey");
+    if (key) {
+      const url = `${apiUrl}/todos`;
+      try {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Api-Key": key,
+          },
+          body: JSON.stringify({ todo: newTask }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        console.log("ok");
+
+        getTasks(); // Cập nhật danh sách task sau khi thêm thành công
+      } catch (error) {
+        console.error("Fetch error:", error);
+      }
+    }
+  };
+
   useEffect(() => {
     getEmail();
   }, []);
+
+  console.log(tasks);
 
   return (
     <>
       <div className="container">
         <h1>Welcome to Todo App</h1>
-        <div className="top">
-          <input type="text" className="add-input" placeholder="Thêm một việc làm mới" />
+        <form className="form" onSubmit={handleAddNewTask}>
+          <input
+            type="text"
+            className="add-input"
+            placeholder="Thêm một việc làm mới"
+            onChange={(e) => setNewTask(e.target.value)}
+            value={newTask}
+          />
           <button className="add-btn">Thêm mới</button>
-        </div>
+        </form>
         {tasks ? (
           <div className="task-list">
             {tasks.map((task, index) => (
               <div className="task-item" key={task._id}>
-                <input type="text" className="task-item__input" value={task.todo} data-status={task.isCompleted} />
+                <input
+                  type="text"
+                  className="task-item__input"
+                  defaultValue={task.todo}
+                  readOnly={!taskStatus[task._id]}
+                  style={{ textDecoration: task.isCompleted ? "line-through" : "" }}
+                  onChange={(e) => handleTaskEdit(task._id, e.target.value)}
+                />
                 {!taskStatus[task._id] ? (
                   <div className="task-item__actions">
                     <div className="row">
@@ -147,7 +258,11 @@ function App() {
                   <div className="task-item__actions">
                     <div className="row">
                       <span>Completed</span>
-                      <input type="checkbox" />
+                      <input
+                        type="checkbox"
+                        checked={task.isCompleted}
+                        onChange={() => handleCheckboxChange(index, task._id)}
+                      />
                     </div>
                     <div className="row">
                       <button
@@ -161,8 +276,21 @@ function App() {
                       >
                         Thoát
                       </button>
-                      <button className="update-btn">Update</button>
-                      <button className="delete-btn">Xóa</button>
+                      <button
+                        className="update-btn"
+                        onClick={() => {
+                          updateTask(task._id);
+                          setTaskStatus((prevState) => ({
+                            ...prevState,
+                            [task._id]: false, // Kết thúc trạng thái chỉnh sửa khi bấm vào nút "Update"
+                          }));
+                        }}
+                      >
+                        Update
+                      </button>
+                      <button className="delete-btn" onClick={() => deleteTask(task._id)}>
+                        Xóa
+                      </button>
                     </div>
                   </div>
                 )}

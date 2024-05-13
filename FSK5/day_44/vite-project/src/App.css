@@ -26,7 +26,7 @@ button:hover {
   background-image: linear-gradient(rgb(0 0 0/40%) 0 0);
 }
 
-.top {
+.form {
   width: 600px;
   position: relative;
   margin: 50px auto 0 auto;
