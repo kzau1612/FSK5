@@ -268,7 +268,11 @@ function App() {
             }}
             value={newTask}
           />
+
           <button className="add-btn">Thêm mới</button>
+          <button type="button" className="search-btn">
+            Tìm Kiếm
+          </button>
         </form>
         {tasks ? (
           <div className="task-list">

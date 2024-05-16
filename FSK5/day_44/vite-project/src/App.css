@@ -36,7 +36,8 @@ button:hover {
 }
 
 .add-input,
-.add-btn {
+.add-btn,
+.search-btn {
   padding: 10px;
   font-size: 20px;
   border: none;
@@ -53,12 +54,18 @@ button:hover {
   color: rgb(255, 255, 255, 0.7);
 }
 
-.add-btn {
+.add-btn,
+.search-btn {
   background: rgb(20, 184, 166);
   border-radius: 0.25rem;
   position: absolute;
   top: 8px;
   right: 0;
+}
+
+.search-btn {
+  background: rgb(249, 115, 22);
+  right: -120px;
 }
 
 .task-list {
