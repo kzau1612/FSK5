@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
 function App() {
-  const [status, setStatus] = useState(false);
-
   const [tasks, setTasks] = useState([]);
   const [editedTasks, setEditedTasks] = useState({});
   const [taskStatus, setTaskStatus] = useState({});
   const [newTask, setNewTask] = useState("");
+  const [searchValue, setSearchValue] = useState("");
 
   const apiUrl = "https://api-todo-ebon.vercel.app/api/v1";
 
@@ -57,7 +56,6 @@ function App() {
   const getTasks = async () => {
     const url = apiUrl + "/todos";
     const key = localStorage.getItem("apiKey");
-    console.log(key);
     if (key) {
       try {
         const response = await fetch(url, {
@@ -135,7 +133,7 @@ function App() {
           throw new Error("Network response was not ok");
         }
         console.log("ok");
-        getTasks(); // Cập nhật danh sách task sau khi cập nhật thành công
+        getTasks();
       } catch (error) {
         console.error("Fetch error:", error);
       }
@@ -146,7 +144,7 @@ function App() {
     e.preventDefault();
     if (newTask.trim()) {
       addNewTask(newTask.trim());
-      setNewTask(""); // Xóa giá trị của input sau khi thêm task mới
+      setNewTask("");
     }
   };
 
@@ -163,14 +161,14 @@ function App() {
             "Content-Type": "application/json",
             "X-Api-Key": key,
           },
-          body: JSON.stringify({ isCompleted: !isCompleted }), // Đặt isCompleted thành true
+          body: JSON.stringify({ isCompleted: !isCompleted }),
         });
 
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
 
-        getTasks(); // Cập nhật danh sách task sau khi cập nhật thành công
+        getTasks();
       } catch (error) {
         console.error("Fetch error:", error);
       }
@@ -196,18 +194,64 @@ function App() {
         }
         console.log("ok");
 
-        getTasks(); // Cập nhật danh sách task sau khi thêm thành công
+        getTasks();
       } catch (error) {
         console.error("Fetch error:", error);
       }
     }
   };
 
+  const searchValueRef = useRef("");
+
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return (...args) => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      timeoutId = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  };
+
+  const handleSearch = async (keyword) => {
+    const key = localStorage.getItem("apiKey");
+    if (key) {
+      const url = `${apiUrl}/todos?${keyword ? "q=" + keyword : ""}`;
+      try {
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Api-Key": key,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        // console.log("ok");
+
+        const data = await response.json();
+        setTasks(data.data.listTodo);
+      } catch (error) {
+        console.error("Fetch error:", error);
+      }
+    }
+  };
+
+  const debouncedHandleSearch = debounce(handleSearch, 1000);
+
   useEffect(() => {
     getEmail();
   }, []);
 
-  console.log(tasks);
+  useEffect(() => {
+    debouncedHandleSearch(searchValue);
+  }, [searchValue]);
+
+  // console.log(tasks);
 
   return (
     <>
@@ -218,7 +262,10 @@ function App() {
             type="text"
             className="add-input"
             placeholder="Thêm một việc làm mới"
-            onChange={(e) => setNewTask(e.target.value)}
+            onChange={(e) => {
+              setNewTask(e.target.value);
+              setSearchValue(e.target.value);
+            }}
             value={newTask}
           />
           <button className="add-btn">Thêm mới</button>
@@ -282,7 +329,7 @@ function App() {
                           updateTask(task._id);
                           setTaskStatus((prevState) => ({
                             ...prevState,
-                            [task._id]: false, // Kết thúc trạng thái chỉnh sửa khi bấm vào nút "Update"
+                            [task._id]: false,
                           }));
                         }}
                       >
