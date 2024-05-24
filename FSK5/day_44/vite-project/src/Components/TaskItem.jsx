@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { AppContext } from "../App";
 
 const TaskItem = ({ todo, index }) => {
@@ -7,13 +7,21 @@ const TaskItem = ({ todo, index }) => {
   const [editValue, setEditValue] = useState(todo.todo);
   const [isCompleted, setIsCompleted] = useState(todo.isCompleted);
 
+  useEffect(() => {
+    setEditValue(todo.todo);
+  }, [todo.todo]);
+
+  useEffect(() => {
+    setIsCompleted(todo.isCompleted);
+  }, [todo.isCompleted]);
+
   const handleEditClick = () => {
     setIsEditing(true);
   };
 
   const handleQuitClick = () => {
     setIsEditing(false);
-    setEditValue(todo.todo); // Reset to original value when quitting edit mode
+    setEditValue(todo.todo);
     setIsCompleted(todo.isCompleted);
   };
 
@@ -28,6 +36,11 @@ const TaskItem = ({ todo, index }) => {
 
   const handleCheckboxChange = () => {
     setIsCompleted(!isCompleted);
+  };
+
+  const handleDeleteClick = () => {
+    setIsEditing(false); // Reset the isEditing state
+    deleteTodo(todo._id);
   };
 
   return (
@@ -53,7 +66,7 @@ const TaskItem = ({ todo, index }) => {
             <button className="update-btn" onClick={handleUpdateClick}>
               Update
             </button>
-            <button className="delete-btn" onClick={() => deleteTodo(todo._id)}>
+            <button className="delete-btn" onClick={handleDeleteClick}>
               Xóa
             </button>
           </div>
@@ -64,7 +77,7 @@ const TaskItem = ({ todo, index }) => {
             <button className="edit-btn" onClick={handleEditClick}>
               Sửa
             </button>
-            <button className="delete-btn" onClick={() => deleteTodo(todo._id)}>
+            <button className="delete-btn" onClick={handleDeleteClick}>
               Xóa
             </button>
           </div>
