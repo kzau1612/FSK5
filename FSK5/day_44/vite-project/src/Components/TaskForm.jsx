@@ -12,10 +12,11 @@ function TaskForm({ handleFormSubmit, handleSearch, setMode, mode }) {
         placeholder="Thêm một việc làm mới"
         onChange={
           mode === 1
-            ? () => {}
+            ? (e) => {
+                setValue(e.target.value);
+              }
             : (e) => {
                 handleSearch(e.target.value);
-                setValue(e.target.value);
               }
         }
       />
@@ -33,6 +34,7 @@ function TaskForm({ handleFormSubmit, handleSearch, setMode, mode }) {
         onClick={() => {
           setMode(2);
           handleSearch(value);
+          console.log(value);
         }}
       >
         Tìm Kiếm
