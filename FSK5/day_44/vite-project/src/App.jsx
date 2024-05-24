@@ -7,6 +7,7 @@ import TaskList from "./Components/TodoList";
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [todos2, setTodos2] = useState([]);
   const [mode, setMode] = useState(1);
 
   httpClient.serverApi = "https://api-todo-ebon.vercel.app/api/v1";
@@ -48,6 +49,7 @@ function App() {
         const { res, data } = await httpClient.get("/todos");
         if (res.ok) {
           setTodos(data.data.listTodo);
+          setTodos2(data.data.listTodo);
         } else {
           console.error("Failed to fetch todo list");
         }
@@ -76,6 +78,7 @@ function App() {
           const newTodo = [data.data];
           const newTodos = [...todos];
           setTodos([...newTodo, ...newTodos]);
+          setTodos2([...newTodo, ...newTodos]);
         } else {
           console.error("Failed to add new todo");
         }
@@ -92,8 +95,9 @@ function App() {
         const { res, data } = await httpClient.delete("/todos/" + id);
         if (res.ok) {
           const newTodos = todos.filter(({ _id }) => !(_id === id));
-          console.log(newTodos);
+
           setTodos(newTodos);
+          setTodos2(newTodos);
         } else {
           console.error("Failed to delete todo");
         }
@@ -116,6 +120,7 @@ function App() {
             return todo;
           });
           setTodos(newTodos);
+          setTodos2(newTodos);
         } else {
           console.error("Failed to delete todo");
         }
@@ -138,7 +143,7 @@ function App() {
   const handleSearch = debounce((value) => {
     const keyword = value ? value.trim() : "";
     const newTodos = todos.filter((todo) => todo.todo.includes(keyword));
-    setTodos(newTodos);
+    setTodos2(newTodos);
   }, 300);
 
   useEffect(() => {
@@ -158,7 +163,7 @@ function App() {
     <AppContext.Provider value={{ deleteTodo, updateTodo }}>
       <div className="container">
         <TaskForm handleFormSubmit={handleFormSubmit} handleSearch={handleSearch} setMode={setMode} mode={mode} />
-        {todos && <TaskList todos={todos} />}
+        {todos2 && <TaskList todos={todos2} />}
       </div>
     </AppContext.Provider>
   );

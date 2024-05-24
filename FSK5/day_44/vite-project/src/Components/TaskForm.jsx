@@ -17,6 +17,7 @@ function TaskForm({ handleFormSubmit, handleSearch, setMode, mode }) {
               }
             : (e) => {
                 handleSearch(e.target.value);
+                setValue(e.target.value);
               }
         }
       />
@@ -34,7 +35,6 @@ function TaskForm({ handleFormSubmit, handleSearch, setMode, mode }) {
         onClick={() => {
           setMode(2);
           handleSearch(value);
-          console.log(value);
         }}
       >
         Tìm Kiếm
