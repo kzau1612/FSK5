@@ -141,8 +141,8 @@ function App() {
     };
   };
 
-  const handleSearch = debounce((e) => {
-    const keyword = e.target.value ? e.target.value.trim() : "";
+  const handleSearch = debounce((value) => {
+    const keyword = value ? value.trim() : "";
     const newTodos = todos.filter((todo) => todo.todo.includes(keyword));
     setTodos2(newTodos);
   }, 300);
