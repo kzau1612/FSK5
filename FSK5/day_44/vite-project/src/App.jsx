@@ -7,6 +7,8 @@ import TaskList from "./Components/TodoList";
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [todos2, setTodos2] = useState([]);
+  const [mode, setMode] = useState(1);
 
   httpClient.serverApi = "https://api-todo-ebon.vercel.app/api/v1";
 
@@ -47,6 +49,7 @@ function App() {
         const { res, data } = await httpClient.get("/todos");
         if (res.ok) {
           setTodos(data.data.listTodo);
+          setTodos2(data.data.listTodo);
         } else {
           console.error("Failed to fetch todo list");
         }
@@ -72,10 +75,10 @@ function App() {
       try {
         const { res, data } = await httpClient.post("/todos", { todo: name });
         if (res.ok) {
-          const newTodo = data.data;
-          const newTodos = [...todos, newTodo];
-          setTodos(newTodos);
-          console.log(todos);
+          const newTodo = [data.data];
+          const newTodos = [...todos];
+          setTodos([...newTodo, ...newTodos]);
+          setTodos2([...newTodo, ...newTodos]);
         } else {
           console.error("Failed to add new todo");
         }
@@ -85,6 +88,65 @@ function App() {
     }
   };
 
+  const deleteTodo = async (id) => {
+    const apiKey = localStorage.getItem("apiKey");
+    if (apiKey && confirm("Bạn có chắc chắc muốn xóa?")) {
+      try {
+        const { res, data } = await httpClient.delete("/todos/" + id);
+        if (res.ok) {
+          console.log(res);
+          console.log(data);
+          const newTodos = todos.filter(({ _id }) => !(_id === id));
+          setTodos(newTodos);
+          setTodos2(newTodos);
+        } else {
+          console.error("Failed to delete todo");
+        }
+      } catch (error) {
+        console.error("Fetch error:", error);
+      }
+    }
+  };
+
+  const updateTodo = async (id, value, isCompleted) => {
+    const apiKey = localStorage.getItem("apiKey");
+    if (apiKey) {
+      try {
+        const { res, data } = await httpClient.patch("/todos/" + id, { todo: value, isCompleted: isCompleted });
+        if (res.ok) {
+          const newTodos = todos.map((todo) => {
+            if (todo._id === id) {
+              return { ...todo, todo: value, isCompleted: isCompleted };
+            }
+            return todo;
+          });
+          setTodos(newTodos);
+          setTodos2(newTodos);
+        } else {
+          console.error("Failed to delete todo");
+        }
+      } catch (error) {
+        console.error("Fetch error:", error);
+      }
+    }
+  };
+
+  const debounce = (func, timeout = 300) => {
+    let timer; //Lưu trữ giá trị của setTimeout
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func(...args);
+      }, timeout);
+    };
+  };
+
+  const handleSearch = debounce((e) => {
+    const keyword = e.target.value ? e.target.value.trim() : "";
+    const newTodos = todos.filter((todo) => todo.todo.includes(keyword));
+    setTodos2(newTodos);
+  }, 300);
+
   useEffect(() => {
     const initialize = async () => {
       await checkEmail();
@@ -92,12 +154,19 @@ function App() {
     };
     initialize();
   }, []);
+  if (mode === 2) {
+    console.log("mode 2");
+  } else {
+    console.log("mode 1");
+  }
 
   return (
-    <div className="container">
-      <TaskForm handleFormSubmit={handleFormSubmit} />
-      {todos && <TaskList todos={todos} />}
-    </div>
+    <AppContext.Provider value={{ deleteTodo, updateTodo }}>
+      <div className="container">
+        <TaskForm handleFormSubmit={handleFormSubmit} handleSearch={handleSearch} setMode={setMode} mode={mode} />
+        {todos2 && <TaskList todos={todos2} />}
+      </div>
+    </AppContext.Provider>
   );
 }
 
