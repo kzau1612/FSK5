@@ -102,6 +102,38 @@ function App() {
           </div>
         </li>
       </ul>
+
+      <table className="cart">
+        <thead>
+          <tr>
+            <th className="cart-title">Tên sản phẩm</th>
+            <th className="cart-title">Số lượng</th>
+            <th className="cart-title">Còn lại</th>
+            <th className="cart-title">Tổng tiền</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td className="cart-item__name">Trang sức Mitsubishi</td>
+            <td>1</td>
+            <td>200000</td>
+            <td>432000</td>
+          </tr>
+          <tr>
+            <td className="cart-item__name">Trang sức Mitsubishi</td>
+            <td>1</td>
+            <td>200000</td>
+            <td>432000</td>
+          </tr>
+          <tr>
+            <td className="cart-item__name">Trang sức Mitsubishi</td>
+            <td>1</td>
+            <td>200000</td>
+            <td>432000</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }
