@@ -1,140 +1,88 @@
+import { useState, useEffect, createContext } from "react";
 import "./App.css";
+import { httpClient } from "./ultils/client.js";
+import ListItem from "./components/ListItem.jsx";
+import Cart from "./components/Cart.jsx";
+
+export const AppContext = createContext();
 
 function App() {
+  const [products, setProducts] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+
+  httpClient.serverApi = "https://api-exercise-sopi.vercel.app/api/v1";
+
+  const checkEmail = async () => {
+    const pattern = /^[^\.\s][\w\-]+(\.[\w\-]+)*@([\w-]+\.)+[\w-]{2,}$/gm;
+    let email = localStorage.getItem("email");
+    if (!email) {
+      email = prompt("Please enter your email");
+      if (email && pattern.test(email)) {
+        localStorage.setItem("email", email);
+      } else {
+        return checkEmail();
+      }
+    }
+    await getApiKey();
+  };
+
+  const getApiKey = async () => {
+    const email = localStorage.getItem("email");
+    if (email) {
+      const { res, data } = await httpClient.get(`/api-key?email=${email}`);
+      if (res.ok) {
+        const apiKey = data.data.apiKey;
+        localStorage.setItem("apiKey", apiKey);
+        httpClient.apiKey = apiKey;
+      } else {
+        localStorage.removeItem("email");
+        localStorage.removeItem("apiKey");
+        await checkEmail();
+      }
+    }
+  };
+
+  const getProduct = async () => {
+    try {
+      const { res, data } = await httpClient.get("/products?limit=8");
+      if (res.ok) {
+        setProducts(data.data.listProduct);
+      }
+    } catch (error) {
+      console.error("Fetch error:", error);
+    }
+  };
+
+  useEffect(() => {
+    const initialize = async () => {
+      await checkEmail();
+      await getProduct();
+    };
+    initialize();
+
+    // Add event listener to clear localStorage on tab close
+    const handleBeforeUnload = () => {
+      localStorage.removeItem("email");
+      localStorage.removeItem("apiKey");
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
+  console.log(cartItems);
   return (
-    <div className="container">
-      <h2 className="title">Welcome to Shop!</h2>
-      <ul className="list">
-        <li className="item">
-          <img
-            src="https://images.unsplash.com/photo-1716847214582-d5979adbf300?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="image"
-            className="item-img"
-          />
-          <h3 className="item-name">Trang Sức Mitsubishi</h3>
-          <div className="row">
-            <span className="item-price">$435134</span>
-            <button className="item-btn">Add to cart!</button>
-          </div>
-        </li>
-        <li className="item">
-          <img
-            src="https://images.unsplash.com/photo-1716847214582-d5979adbf300?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="image"
-            className="item-img"
-          />
-          <h3 className="item-name">Trang Sức Mitsubishi</h3>
-          <div className="row">
-            <span className="item-price">$435134</span>
-            <button className="item-btn">Add to cart!</button>
-          </div>
-        </li>
-        <li className="item">
-          <img
-            src="https://images.unsplash.com/photo-1716847214582-d5979adbf300?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="image"
-            className="item-img"
-          />
-          <h3 className="item-name">Trang Sức Mitsubishi</h3>
-          <div className="row">
-            <span className="item-price">$435134</span>
-            <button className="item-btn">Add to cart!</button>
-          </div>
-        </li>
-        <li className="item">
-          <img
-            src="https://images.unsplash.com/photo-1716847214582-d5979adbf300?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="image"
-            className="item-img"
-          />
-          <h3 className="item-name">Trang Sức Mitsubishi</h3>
-          <div className="row">
-            <span className="item-price">$435134</span>
-            <button className="item-btn">Add to cart!</button>
-          </div>
-        </li>
-        <li className="item">
-          <img
-            src="https://images.unsplash.com/photo-1716847214582-d5979adbf300?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="image"
-            className="item-img"
-          />
-          <h3 className="item-name">Trang Sức Mitsubishi</h3>
-          <div className="row">
-            <span className="item-price">$435134</span>
-            <button className="item-btn">Add to cart!</button>
-          </div>
-        </li>
-        <li className="item">
-          <img
-            src="https://images.unsplash.com/photo-1716847214582-d5979adbf300?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="image"
-            className="item-img"
-          />
-          <h3 className="item-name">Trang Sức Mitsubishi</h3>
-          <div className="row">
-            <span className="item-price">$435134</span>
-            <button className="item-btn">Add to cart!</button>
-          </div>
-        </li>
-        <li className="item">
-          <img
-            src="https://images.unsplash.com/photo-1716847214582-d5979adbf300?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="image"
-            className="item-img"
-          />
-          <h3 className="item-name">Trang Sức Mitsubishi</h3>
-          <div className="row">
-            <span className="item-price">$435134</span>
-            <button className="item-btn">Add to cart!</button>
-          </div>
-        </li>
-        <li className="item">
-          <img
-            src="https://images.unsplash.com/photo-1716847214582-d5979adbf300?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="image"
-            className="item-img"
-          />
-          <h3 className="item-name">Trang Sức Mitsubishi</h3>
-          <div className="row">
-            <span className="item-price">$435134</span>
-            <button className="item-btn">Add to cart!</button>
-          </div>
-        </li>
-      </ul>
-
-      <table className="cart">
-        <thead>
-          <tr>
-            <th className="cart-title">Tên sản phẩm</th>
-            <th className="cart-title">Số lượng</th>
-            <th className="cart-title">Còn lại</th>
-            <th className="cart-title">Tổng tiền</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td className="cart-item__name">Trang sức Mitsubishi</td>
-            <td>1</td>
-            <td>200000</td>
-            <td>432000</td>
-          </tr>
-          <tr>
-            <td className="cart-item__name">Trang sức Mitsubishi</td>
-            <td>1</td>
-            <td>200000</td>
-            <td>432000</td>
-          </tr>
-          <tr>
-            <td className="cart-item__name">Trang sức Mitsubishi</td>
-            <td>1</td>
-            <td>200000</td>
-            <td>432000</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <AppContext.Provider value={{ products, setProducts, cartItems, setCartItems }}>
+      <div className="container">
+        <h2 className="title">Welcome to Shop!</h2>
+        <ListItem />
+        {!cartItems.length ? <p className="text">Chưa có gì trong giỏ hàng cả!!!!</p> : <Cart />}
+      </div>
+    </AppContext.Provider>
   );
 }
 

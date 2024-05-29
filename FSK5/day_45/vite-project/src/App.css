@@ -97,3 +97,8 @@ td {
 .cart-item__name {
   font-weight: 600;
 }
+
+.text {
+  text-align: center;
+  margin-top: 20px;
+}
