@@ -153,16 +153,16 @@ function App() {
     };
     initialize();
 
-    const handleBeforeUnload = () => {
-      localStorage.removeItem("email");
-      localStorage.removeItem("apiKey");
-    };
+    // const handleBeforeUnload = () => {
+    //   localStorage.removeItem("email");
+    //   localStorage.removeItem("apiKey");
+    // };
 
-    window.addEventListener("beforeunload", handleBeforeUnload);
+    // window.addEventListener("beforeunload", handleBeforeUnload);
 
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
+    // return () => {
+    //   window.removeEventListener("beforeunload", handleBeforeUnload);
+    // };
   }, []);
   if (mode === 2) {
     console.log("mode 2");
