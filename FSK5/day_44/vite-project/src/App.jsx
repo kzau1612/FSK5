@@ -152,6 +152,17 @@ function App() {
       await getTodoList();
     };
     initialize();
+
+    const handleBeforeUnload = () => {
+      localStorage.removeItem("email");
+      localStorage.removeItem("apiKey");
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
   }, []);
   if (mode === 2) {
     console.log("mode 2");

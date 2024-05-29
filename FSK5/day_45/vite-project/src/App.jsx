@@ -60,7 +60,6 @@ function App() {
     };
     initialize();
 
-    // Add event listener to clear localStorage on tab close
     const handleBeforeUnload = () => {
       localStorage.removeItem("email");
       localStorage.removeItem("apiKey");
@@ -68,7 +67,6 @@ function App() {
 
     window.addEventListener("beforeunload", handleBeforeUnload);
 
-    // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
