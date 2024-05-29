@@ -52,14 +52,16 @@ li {
   color: black;
 }
 
-.item-btn {
+.item-btn,
+.submit {
   font-weight: 600;
   background: rgb(34, 197, 94);
   color: white;
   padding: 8px 16px;
 }
 
-.item-btn:hover {
+.item-btn:hover,
+.submit:hover {
   background-image: linear-gradient(rgb(0 0 0/40%) 0 0);
 }
 

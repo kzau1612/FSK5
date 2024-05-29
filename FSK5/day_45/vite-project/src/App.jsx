@@ -53,6 +53,42 @@ function App() {
     }
   };
 
+  const handleSubmit = async () => {
+    const apiKey = localStorage.getItem("apiKey");
+    if (apiKey) {
+      try {
+        const orderItems = cartItems.map((item) => ({
+          productId: item._id,
+          quantity: item.totalQuantity,
+        }));
+
+        const newProducts = products.map((product) => {
+          const existingProduct = cartItems.find((item) => item._id === product._id);
+
+          if (existingProduct) {
+            return {
+              ...product,
+              quantity: product.quantity - existingProduct.totalQuantity,
+            };
+          }
+
+          return product;
+        });
+
+        const { res, data } = await httpClient.post("/orders", orderItems);
+        if (res.ok) {
+          setProducts(newProducts);
+          setCartItems([]);
+          alert("Thanh toán thành công!");
+        } else {
+          console.error("Failed to add new todo");
+        }
+      } catch (error) {
+        console.error("Fetch error:", error);
+      }
+    }
+  };
+
   useEffect(() => {
     const initialize = async () => {
       await checkEmail();
@@ -63,7 +99,7 @@ function App() {
 
   console.log(cartItems);
   return (
-    <AppContext.Provider value={{ products, setProducts, cartItems, setCartItems }}>
+    <AppContext.Provider value={{ products, setProducts, cartItems, setCartItems, handleSubmit }}>
       <div className="container">
         <h2 className="title">Welcome to Shop!</h2>
         <ListItem />
