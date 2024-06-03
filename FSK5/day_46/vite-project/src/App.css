@@ -1,0 +1,100 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100%;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  padding: 100px 200px;
+  /* padding-right: 200px; */
+}
+
+.light {
+  color: black;
+  background: white;
+}
+
+.dark {
+  color: white;
+  background: rgb(48, 48, 48);
+}
+
+.range-slider {
+  width: 100%;
+  margin: 50px auto;
+  text-align: center;
+  position: relative;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: red;
+}
+
+.value-display {
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+}
+
+.value-100,
+.value-400,
+.value-700,
+.value-1000 {
+  top: 50px;
+}
+
+.value-100 {
+  position: absolute;
+  left: 10%;
+  translate: -25%;
+}
+
+.value-400 {
+  position: absolute;
+  left: 40%;
+  translate: -40%;
+}
+
+.value-700 {
+  position: absolute;
+  left: 70%;
+  translate: -50%;
+}
+
+.value-1000 {
+  position: absolute;
+  right: 0;
+}
+
+.change-theme {
+  border: 1px solid black;
+}
+
+.change-theme:focus {
+  outline: none;
+}
+
+.change-theme:hover {
+  border: 1px solid black;
+}
+
+#input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  border: 2px solid black;
+}
+
+#input:focus {
+  outline: none;
+  border: 2px solid blue;
+}
