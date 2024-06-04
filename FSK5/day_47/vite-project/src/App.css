@@ -1,0 +1,39 @@
+* {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.login-form {
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.login-form p {
+  margin-top: 20px;
+}
+
+.login-form button,
+.logout-btn {
+  margin-top: 20px;
+  background: rgb(255, 87, 34);
+  border: 1px solid transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-image: linear-gradient(rgb(0 0 0/30%) 0 0);
+}
+
+.login-form button:focus {
+  outline: none;
+}
