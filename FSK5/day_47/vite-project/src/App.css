@@ -22,7 +22,8 @@
 }
 
 .login-form button,
-.logout-btn {
+.logout-btn,
+.send-btn {
   margin-top: 20px;
   background: rgb(255, 87, 34);
   border: 1px solid transparent;
@@ -36,4 +37,17 @@
 
 .login-form button:focus {
   outline: none;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+}
+
+textarea {
+  resize: none;
 }
