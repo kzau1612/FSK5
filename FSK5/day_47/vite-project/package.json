@@ -13,7 +13,8 @@
     "@auth0/auth0-react": "^2.2.4",
     "@emailjs/browser": "^4.3.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-toastify": "^10.0.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
