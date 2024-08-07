@@ -67,6 +67,19 @@ button:focus-visible {
   }
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
 .lds-ring,
 .lds-ring div {
   box-sizing: border-box;

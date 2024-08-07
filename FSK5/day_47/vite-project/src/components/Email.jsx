@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 const Email = ({ user }) => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  console.log(user);
+  const [isLoading, setIsLoading] = useState(false);
 
   const isValidEmail = (email) => {
     const emailRegex = /^[a-z0-9][\w\.]+\@\w+?(\.\w+){1,}$/gi;
@@ -25,6 +25,8 @@ const Email = ({ user }) => {
       return;
     }
 
+    setIsLoading(true);
+
     const serviceId = "service_f13zsth";
     const templateId = "template_uf224ja";
     const publicKey = "P1sl9CduU8XLl-bwe";
@@ -42,32 +44,47 @@ const Email = ({ user }) => {
         toast.success("Email sent successfully!");
         setEmail("");
         setMessage("");
+        setIsLoading(false);
       })
       .catch((error) => {
         toast.error("Email failed to send!");
+        setIsLoading(false);
       });
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="user_email"
-          placeholder="Enter your email..."
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <textarea
-          name="message"
-          value={message}
-          placeholder="Enter your message..."
-          onChange={(e) => setMessage(e.target.value)}
-        />
-        <button type="submit" className="send-btn">
-          Send
-        </button>
-      </form>
+      {isLoading ? (
+        <div className="overlay">
+          <div className="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            name="user_email"
+            placeholder="Enter your email..."
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            disabled={isLoading}
+          />
+          <textarea
+            name="message"
+            value={message}
+            placeholder="Enter your message..."
+            onChange={(e) => setMessage(e.target.value)}
+            disabled={isLoading}
+          />
+          <button type="submit" className="send-btn" disabled={isLoading}>
+            Send
+          </button>
+        </form>
+      )}
       <ToastContainer
         position="top-right"
         autoClose={5000}
