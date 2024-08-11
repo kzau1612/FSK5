@@ -72,6 +72,7 @@ function App() {
         trial={trial}
         maxTrial={maxTrial}
         setRandomNum={setRandomNum}
+        setData={setData}
       />
       <div className="table" ref={tableRef}>
         {data &&

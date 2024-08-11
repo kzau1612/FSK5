@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Input = ({ rangeValue, setTrial, randomNum, maxTrial, setRandomNum, trial }) => {
+const Input = ({ rangeValue, setTrial, randomNum, maxTrial, setRandomNum, trial, setData }) => {
   const [value, setValue] = useState("");
   const [showRetryBtn, setShowRetryBtn] = useState(false);
   const inputRef = useRef(null);
@@ -49,6 +49,7 @@ const Input = ({ rangeValue, setTrial, randomNum, maxTrial, setRandomNum, trial 
       data.trueNumber = randomNum;
       storedData.unshift(data);
       localStorage.setItem("data", JSON.stringify(storedData));
+      setData(storedData);
       toast.success("Chúc mừng! Bạn đã đoán đúng số!");
       setValue("");
       setTrial(0);
@@ -67,6 +68,7 @@ const Input = ({ rangeValue, setTrial, randomNum, maxTrial, setRandomNum, trial 
           data.trueNumber = randomNum;
           storedData.unshift(data);
           localStorage.setItem("data", JSON.stringify(storedData));
+          setData(storedData);
           setInputData([]);
 
           setValue("");

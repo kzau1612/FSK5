@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const TableResult = ({ data, style, index, dataLength, maxTrial }) => {
-  const trueNumberIndex = data.guessNumbers.indexOf(data.trueNumber.toString());
+  const trueNumberIndex = data.guessNumbers.indexOf(data.trueNumber.toString()) + 1;
 
   const accuracyRate = trueNumberIndex !== -1 ? 1 - trueNumberIndex / data.maxTrial : 0;
   //   console.log(trueNumberIndex, accuracyRate);
