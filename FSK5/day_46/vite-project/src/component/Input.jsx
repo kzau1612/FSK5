@@ -6,7 +6,7 @@ const Input = ({ rangeValue, setTrial, randomNum, maxTrial, setRandomNum, trial 
   const [value, setValue] = useState("");
   const [showRetryBtn, setShowRetryBtn] = useState(false);
   const inputRef = useRef(null);
-  const inputNumbers = useRef([]);
+  const [inputData, setInputData] = useState([]);
 
   const handleInputChange = (e) => {
     const newValue = e.target.value;
@@ -33,22 +33,42 @@ const Input = ({ rangeValue, setTrial, randomNum, maxTrial, setRandomNum, trial 
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    console.log(randomNum);
     if (!value) return;
+    setInputData([...inputData, value]);
     if (+value < randomNum) {
       toast.warn("Bạn cần tăng giá trị lên!");
     } else if (+value > randomNum) {
       toast.warn("Bạn cần giảm giá trị xuống!");
     } else if (+value === randomNum) {
+      let storedData = JSON.parse(localStorage.getItem("data")) || [];
+      const data = {};
+      data.guessNumbers = [...inputData, value];
+      data.maxTrial = maxTrial;
+      data.trueNumber = randomNum;
+      storedData.unshift(data);
+      localStorage.setItem("data", JSON.stringify(storedData));
       toast.success("Chúc mừng! Bạn đã đoán đúng số!");
       setValue("");
-      setRandomNum(Math.floor(Math.random() * rangeValue) + 1);
-      setTrial(maxTrial);
+      setTrial(0);
+      setInputData([]);
       setShowRetryBtn(true);
       return;
     }
+
     setTrial((prev) => {
       if (prev > 0) {
         if (prev === 1) {
+          let storedData = JSON.parse(localStorage.getItem("data")) || [];
+          const data = {};
+          data.guessNumbers = [...inputData, value];
+          data.maxTrial = maxTrial;
+          data.trueNumber = randomNum;
+          storedData.unshift(data);
+          localStorage.setItem("data", JSON.stringify(storedData));
+          setInputData([]);
+
           setValue("");
           setShowRetryBtn(true);
           return 0;
@@ -89,17 +109,6 @@ const Input = ({ rangeValue, setTrial, randomNum, maxTrial, setRandomNum, trial 
               max="1000"
             />
           </form>
-          <ToastContainer
-            position="top-right"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover={false}
-          />
         </div>
       )}
     </>

@@ -1,4 +1,4 @@
-const ChangeTheme = ({ handleChangeTheme, theme }) => {
+const ChangeThemeBtn = ({ handleChangeTheme, theme }) => {
   return (
     <div>
       <button className="change-theme-btn" onClick={handleChangeTheme}>
@@ -8,4 +8,4 @@ const ChangeTheme = ({ handleChangeTheme, theme }) => {
   );
 };
 
-export default ChangeTheme;
+export default ChangeThemeBtn;
