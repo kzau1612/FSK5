@@ -3,10 +3,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProduct } from "../store/productSlice";
 import "../assets/scss/ProductDetailPage.scss";
+import ReactLoading from "react-loading";
+import { addCart } from "../store/cartSlice";
 
 const ProductDetailPage = () => {
   const { id } = useParams();
   const product = useSelector((state) => state.product.product);
+  const status = useSelector((state) => state.product.status);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -15,9 +18,17 @@ const ProductDetailPage = () => {
     navigate(-1);
   };
 
+  const handleAddToCart = () => {
+    dispatch(addCart(product));
+  };
+
   useEffect(() => {
     dispatch(fetchProduct(id));
-  }, [product]);
+  }, []);
+
+  if (status === "pending") {
+    return <ReactLoading type={"spin"} color={"black"} height={50} width={50} />;
+  }
 
   return (
     <div className="product-detail">
@@ -28,10 +39,12 @@ const ProductDetailPage = () => {
         <p className="product-detail__desc">{product.description}</p>
         <span className="product-detail__category">Category: {product.category}</span>
         <button className="back-btn" onClick={handleBack}>
-          Go Home
+          Go Back
         </button>
         <span className="product-detail__price">Price: ${product.price}</span>
-        <button className="add-btn">Add to Cart</button>
+        <button className="add-btn" onClick={handleAddToCart}>
+          Add to Cart
+        </button>
       </div>
     </div>
   );

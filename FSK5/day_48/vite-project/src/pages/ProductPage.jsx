@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../store/productSlice";
-import { updatePage } from "../store/productSlice";
 import "../assets/scss/ProductPage.scss";
 import ProductItem from "../components/ProductItem";
 import PaginationC from "../components/Pagination";
-import { useParams } from "react-router-dom";
+import ReactLoading from "react-loading";
 
 const ProductPage = () => {
   const products = useSelector((state) => state.product.productList);
   const page = useSelector((state) => state.product.page);
+  const status = useSelector((state) => state.product.status);
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
   // console.log(cart);
@@ -17,6 +17,10 @@ const ProductPage = () => {
   useEffect(() => {
     dispatch(fetchProducts(page));
   }, [page]);
+
+  if (status === "pending") {
+    return <ReactLoading type={"spin"} color={"black"} height={50} width={50} />;
+  }
 
   return (
     <>
