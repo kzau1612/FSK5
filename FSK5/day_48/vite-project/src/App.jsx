@@ -1,6 +1,6 @@
 import "./App.css";
 import Header from "./components/Header";
-import ProductPage from "./pages/productPage";
+import ProductPage from "./pages/ProductPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import { Routes, Route, Navigate } from "react-router-dom";
 import CartPage from "./pages/CartPage";

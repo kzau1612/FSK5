@@ -11,8 +11,6 @@ const ProductPage = () => {
   const page = useSelector((state) => state.product.page);
   const status = useSelector((state) => state.product.status);
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart.cart);
-  // console.log(cart);
 
   useEffect(() => {
     dispatch(fetchProducts(page));
