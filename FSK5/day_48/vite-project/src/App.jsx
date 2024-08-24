@@ -9,14 +9,13 @@ function App() {
   return (
     <>
       <Header />
-      {
-        <Routes>
-          <Route path="/" element={<Navigate to="/products/1" />} />
-          <Route path="/products/:page" element={<ProductPage />} />
-          <Route path="/product/:id" element={<ProductDetailPage />} />
-          <Route path="/cart" element={<CartPage />} />
-        </Routes>
-      }
+
+      <Routes>
+        <Route path="/" element={<Navigate to="/products/1" />} />
+        <Route path="/products/:page" element={<ProductPage />} />
+        <Route path="/product/:id" element={<ProductDetailPage />} />
+        <Route path="/cart" element={<CartPage />} />
+      </Routes>
     </>
   );
 }
