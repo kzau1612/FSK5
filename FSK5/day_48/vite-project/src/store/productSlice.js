@@ -9,11 +9,7 @@ export const productSlice = createSlice({
     status: "idle",
     page: 1,
   },
-  reducers: {
-    updatePage: (state, action) => {
-      state.page = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     //productList
     builder.addCase(fetchProducts.pending, (state) => {
@@ -47,6 +43,7 @@ export const fetchProducts = createAsyncThunk("fetchProducts", async (page = 1, 
     return rejectedWithValue("data");
   }
   const products = await response.json();
+  // console.log(products.data.listProduct);
   return { listProduct: products.data.listProduct, totalPage: products.data.totalPage };
 });
 
@@ -56,8 +53,5 @@ export const fetchProduct = createAsyncThunk("fetchProduct", async (id = 1, { re
     return rejectedWithValue("data");
   }
   const product = await response.json();
-  // console.log(product.data);
   return product.data;
 });
-
-export const { updatePage } = productSlice.actions;

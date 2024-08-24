@@ -5,10 +5,11 @@ import "../assets/scss/ProductPage.scss";
 import ProductItem from "../components/ProductItem";
 import PaginationC from "../components/Pagination";
 import ReactLoading from "react-loading";
+import { useParams } from "react-router-dom";
 
 const ProductPage = () => {
   const products = useSelector((state) => state.product.productList);
-  const page = useSelector((state) => state.product.page);
+  const page = parseInt(useParams().page);
   const status = useSelector((state) => state.product.status);
   const dispatch = useDispatch();
 
@@ -27,7 +28,7 @@ const ProductPage = () => {
           <ProductItem key={product._id} product={product} />
         ))}
       </div>
-      <PaginationC />
+      <PaginationC page={page} />
     </>
   );
 };

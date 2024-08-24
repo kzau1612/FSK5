@@ -1,25 +1,20 @@
 import { Pagination } from "@mui/material";
-import { useSelector, useDispatch } from "react-redux";
-import { updatePage } from "../store/productSlice";
+import { useSelector } from "react-redux";
 import "../assets/scss/Pagination.scss";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const PaginationC = () => {
+const PaginationC = ({ page }) => {
   const totalPage = useSelector((state) => state.product.totalPage);
-  const { page } = useParams();
-  const currentPage = parseInt(page);
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const handleChange = (e, value) => {
-    dispatch(updatePage(value));
     navigate(`/products/${value}`);
   };
 
   return (
     <div className="pagination-page">
-      <Pagination count={totalPage} page={currentPage} onChange={handleChange} color="primary" />
+      <Pagination count={totalPage} page={page} onChange={handleChange} color="primary" />
     </div>
   );
 };
